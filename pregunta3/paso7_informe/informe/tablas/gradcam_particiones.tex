@@ -1,0 +1,14 @@
+\begin{table}[t]
+  \centering
+  \small
+  \begin{tabular}{lrrrrrrr}
+    \toprule
+    Partición & Imág. & Media & Mediana & $\sigma$ & $\leq 1.0$ & Chicos & Grandes \\
+    \midrule
+    \texttt{cis\_test} & 120 & 1.46 & 1.12 & 0.94 & 52 & 1.89 & 1.43 \\
+    \texttt{trans\_test} & 120 & 1.25 & 1.00 & 0.97 & 62 & 0.89 & 1.27 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Razón de masa de Grad-CAM: fracción de la activación que cae dentro de las cajas anotadas, dividida por el área que esas cajas ocupan. Vale 1.0 si el mapa es uniforme, es decir si el modelo no localiza nada. La columna $\leq 1.0$ cuenta las imágenes en que el modelo no localiza mejor que el azar. `Chicos' son los animales que ocupan menos del 1\% del cuadro.}
+  \label{tab:gradcam}
+\end{table}

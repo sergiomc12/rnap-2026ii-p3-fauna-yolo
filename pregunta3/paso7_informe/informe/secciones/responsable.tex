@@ -1,0 +1,60 @@
+\label{sec:responsable}
+
+Los resultados de este trabajo son, en sí mismos, el argumento de por qué un
+detector de fauna no debe desplegarse como oráculo. Tres de ellos lo dicen con
+números propios.
+
+\emph{El desempeño se derrumba fuera de las cámaras conocidas.} La brecha entre
+ubicaciones vistas y nuevas (Sección~\ref{sec:generalizacion}) significa que
+validar un modelo en las cámaras donde se entrenó sobreestima lo que hará en una
+cámara nueva. Un proyecto que instala un sensor en un sitio no muestreado y
+confía en la cifra de validación está usando un número que no corresponde a su
+situación. La consecuencia operativa es concreta: las métricas que se publican
+junto a un modelo de este dominio deben declarar en qué ubicaciones se midieron.
+
+\emph{El error no es uniforme entre especies, y es peor donde más importa.} Las
+especies con menos datos de entrenamiento son las que el modelo detecta peor, y
+suelen ser también las de mayor interés para conservación, las raras. Los dos
+errores no cuestan lo mismo en este dominio: un falso negativo, no registrar una
+especie rara que sí estaba, puede hacer concluir que un sitio está vacío y
+justificar no protegerlo, mientras que un falso positivo cuesta sobre todo tiempo
+de verificación humana; el daño se concentra justo donde el modelo es más débil.
+Un reporte automático subestima sistemáticamente a las especies cuya presencia o
+ausencia puede motivar una decisión de manejo. Reportar un único mAP agregado
+oculta ese sesgo; por eso el desglose por especie con su soporte al lado no es un
+detalle de presentación sino una condición para que el número sea utilizable.
+
+\emph{El modelo no mira donde uno supone.} La razón de masa de Grad-CAM
+(Sección~\ref{sec:gradcam}) muestra que buena parte de la evidencia que el modelo
+usa no cae sobre el animal. Un sistema que acierta apoyándose en el fondo acierta
+hasta que el fondo cambia, y no hay nada en su salida que avise cuándo eso
+ocurrió. La confianza que el detector reporta no es una medida de que esté
+mirando lo correcto.
+
+De ahí, cuatro compromisos para un despliegue responsable, respaldados por las
+mediciones de este trabajo.
+
+\emph{Asistir, no decidir.} El uso defendible es el que MegaDetector adoptó
+explícitamente~\cite{beery2019efficient}: filtrar el volumen de imágenes vacías,
+que es el trabajo tedioso, y dejar la identificación de especie a revisión
+humana, especialmente en las especies raras, donde el modelo es menos fiable y el
+costo de un error es mayor.
+
+\emph{Declarar la incertidumbre junto al número.} Un conteo de eventos sin su
+error invita a conclusiones que no aguanta; por eso el módulo de monitoreo
+reporta su error especie por especie contra las anotaciones humanas, en vez de
+dejar que el lector lo suponga.
+
+\emph{Cuidar el dato de ubicación.} Las coordenadas de las cámaras trampa son
+información sensible: un registro de dónde y cuándo aparece una especie amenazada
+es lo que necesita quien quiera cazarla. Un pipeline que indexa y publica
+detecciones amplifica ese riesgo a escala, así que lo que se comparte debe ir
+agregado o con la ubicación degradada deliberadamente.
+
+\emph{No confundir ausencia de detección con ausencia de animal.} La ocupación
+que el módulo del entregable \#5 reporta es \emph{naive}: una especie presente
+pero no fotografiada cuenta como ausente. Corregirlo exige modelar la
+probabilidad de detección~\cite{mackenzie2002estimating}, y mientras no se haga,
+la cifra es una cota inferior, no una estimación. Decirlo es parte del reporte,
+no una advertencia al pie: una ocupación subestimada puede justificar la decisión
+de no proteger un sitio.

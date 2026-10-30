@@ -1,0 +1,23 @@
+Se aborda la detección y clasificación de especies en fotografías de cámaras
+trampa del conjunto Caltech Camera Traps, donde el 70\% de las imágenes no
+contiene ningún animal y el desbalance entre especies alcanza un factor 500. Se
+ajusta un detector YOLO11 a 640 px sobre 12\,099 imágenes con bounding box, con
+las imágenes vacías tratadas como ausencia de objeto y no como clase de fondo.
+El modelo alcanza mAP@0.5 $= 0.7463$ (IC95\% $[0.7236, 0.7563]$) en ubicaciones
+de cámara vistas durante el entrenamiento y $0.3978$ en ubicaciones nunca
+vistas, una brecha de $0.3485$ con intervalos disjuntos. Controlando el cambio
+de prevalencia de especies entre particiones, la brecha solo baja a $0.3155$: el
+91\% es atribuible al cambio de ubicación. El colapso es específico de los
+animales (\texttt{car} conserva AP@0.5 $= 0.9950$ en terreno nuevo mientras
+\texttt{bird} cae de $0.5592$ a $0.0132$), y Grad-CAM sobre el backbone, con la
+capa elegida por medición y no por convención, muestra que para animales que
+ocupan menos del 1\% del cuadro la activación en ubicaciones nuevas está
+\emph{menos} concentrada sobre el animal que un mapa uniforme. La robustez ante
+oclusión sintética es nula: tapar el 25\% del área de cada animal cuesta el 69\%
+del mAP. Sobre esas salidas se construye un módulo de monitoreo que agrupa las
+detecciones en eventos independientes y reporta tasas por 100 noches-cámara; su
+índice de nocturnidad reproduce la historia natural conocida de las catorce
+especies detectadas sin haber recibido esa información, y al mismo tiempo
+sobreestima el conteo de eventos en \emph{todas} ellas, entre un 2\% y un
+100\% según la especie. Esa cifra, medida contra las anotaciones humanas, es la
+que determina para qué sirve el módulo y para qué no.

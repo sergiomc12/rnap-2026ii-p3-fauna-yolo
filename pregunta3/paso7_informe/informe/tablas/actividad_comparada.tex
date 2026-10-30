@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \begin{tabular}{lrrr|rrr}
+    \toprule
+    Especie & Eventos & Error & Noct. & Eventos & Error & Noct. \\
+    \midrule
+    \texttt{opossum} & 1\,302 & +14\% & 73\% & 750 & +2\% & 80\% \\
+    \texttt{raccoon} & 1\,016 & +15\% & 70\% & 410 & +74\% & 77\% \\
+    \texttt{cat} & 786 & +234\% & 46\% & 360 & +21\% & 35\% \\
+    \texttt{coyote} & 724 & +30\% & 58\% & 564 & +17\% & 51\% \\
+    \texttt{car} & 679 & +12\% & 4\% & 319 & +2\% & 8\% \\
+    \texttt{bobcat} & 655 & +13\% & 52\% & 342 & +32\% & 49\% \\
+    \texttt{rabbit} & 403 & +108\% & 28\% & 310 & +24\% & 24\% \\
+    \texttt{dog} & 309 & +74\% & 7\% & 192 & +42\% & 11\% \\
+    \texttt{squirrel} & 252 & +6\% & 2\% & 154 & +18\% & 0\% \\
+    \texttt{bird} & 244 & +281\% & 20\% & 139 & +45\% & 12\% \\
+    \texttt{skunk} & 226 & +81\% & 71\% & 87 & +12\% & 66\% \\
+    \texttt{rodent} & 25 & +150\% & 60\% & 41 & +5\% & 88\% \\
+    \texttt{fox} & 9 & +800\% & 89\% & 4 & +100\% & 75\% \\
+    \texttt{deer} & 5 & --- & 0\% & 34 & +26\% & 50\% \\
+    \texttt{badger} & 2 & -75\% & 100\% & --- & --- & --- \\
+    \bottomrule
+  \end{tabular}
+  \caption{Reporte de actividad por especie. A la izquierda la demostración principal, cámaras nunca vistas (\texttt{trans\_test}: 9 cámaras, 2\,090 noches-cámara); a la derecha el caso favorable, cámaras vistas en el entrenamiento (\texttt{cis\_test}: 10 cámaras, 1\,131 noches-cámara). Un evento independiente agrupa detecciones de la misma especie y cámara separadas por menos de 30 minutos. `Error' es la diferencia relativa de los eventos del modelo contra el mismo reporte calculado desde las cajas anotadas a mano: es la validación del módulo, no un adorno. `Noct.' es el índice de nocturnidad, un control contra la historia natural conocida de cada especie.}
+  \label{tab:actividad}
+\end{table}

@@ -1,0 +1,98 @@
+\subsection{Conjunto de datos y particiones}
+
+Caltech Camera Traps (CCT-20), vía LILA BC: 243\,100 imágenes de 140 ubicaciones
+de cámara, con 21 categorías de animales más la clase vacía. De esas, 63\,025
+tienen bounding box, y solo esas pueden entrenar un detector: 46\,026 imágenes
+únicas, 18\,GB, verificadas de a una contra truncamiento tras la descarga.
+
+Se usa la partición de ECCV 2018~\cite{beery2018recognition}, que separa por
+\emph{tipo de ubicación}: \texttt{train} (12\,099 imágenes con caja, 10
+ubicaciones), \texttt{cis\_val} (1\,590) y \texttt{cis\_test} (12\,696) en las
+\emph{mismas} ubicaciones, y \texttt{trans\_val} (1\,533) y \texttt{trans\_test}
+(18\,033) en ubicaciones \emph{nunca vistas}.
+
+\emph{Fuga por ráfagas.} Las cámaras disparan ráfagas de unas tres fotos casi
+idénticas, y una ráfaga repartida entre entrenamiento y evaluación pone en la
+evaluación una imagen que el modelo prácticamente memorizó. Medido:
+\texttt{cis\_val} comparte 224 ráfagas con \texttt{train}, lo que contamina 75 de
+sus 1\,665 imágenes con caja (4.5\%); esas 75 se excluyen. Las particiones
+\emph{trans} y \texttt{cis\_test} no comparten ninguna, consistente con el
+diseño: una ráfaga no cruza cámaras.
+
+\emph{Las imágenes vacías no son una clase.} \texttt{empty} se excluye del mapa
+de clases, de modo que quedan 15 especies. La razón es conceptual: en detección
+la ausencia de cajas ya expresa que no hay nada, y una clase de fondo le
+enseñaría al modelo a dibujar una caja alrededor de la nada, con coordenadas que
+no existen. Podrían sumarse como \emph{negativos explícitos} (una imagen sin
+archivo de etiquetas cuenta como fondo); no se hizo porque habría cambiado a la
+vez el tamaño del conjunto y la proporción fondo/objeto, y el efecto no sería
+atribuible a ninguna de las dos cosas.
+
+Dos conversiones de formato quedan fijadas por pruebas unitarias con un caso
+verificado a mano, porque mal resueltas no producen ningún error visible: COCO
+guarda la esquina superior izquierda más el tamaño en píxeles y el detector
+espera el centro más el tamaño normalizado (confundirlos desplaza cada caja media
+caja), y los identificadores de categoría de COCO no son contiguos mientras el
+detector exige $0..N{-}1$ en el orden exacto de la lista de nombres.
+
+\subsection{Decisiones de entrenamiento}
+\label{sec:metodo_aumento}
+
+\input{tablas/entrenamiento}
+
+El criterio que gobierna el aumento de datos es uno solo: un aumento vale si
+produce imágenes que la cámara podría haber tomado de verdad. La cámara está
+atada a un poste y no gira, así que el volteo vertical, la rotación y la
+perspectiva van en cero. El volteo horizontal sí vale, porque un animal cruza en
+cualquier dirección y la especie no cambia al reflejarla, y la variación HSV
+reproduce el rango real de iluminación, que incluye disparos nocturnos con
+infrarrojo. \emph{Mosaic} compone cuatro imágenes en una: ayuda con objetos
+chicos, que acá son el caso dominante, y rompe el contexto de fondo, que es
+justamente lo que el modelo tiende a memorizar. Se apaga en las últimas diez
+épocas, porque terminar el entrenamiento con imágenes compuestas ajusta el modelo
+a una distribución que no es la del despliegue.
+
+\emph{Un aumento que el modelo nunca recibió.} El registro de la corrida
+declara \texttt{erasing: 0.4} y \texttt{auto\_augment: randaugment}, y los dos
+son engañosos: la implementación los aplica solo en clasificación. Verificarlo
+importa para la validez del entregable \#4: el modelo cuya robustez ante oclusión
+se mide en la Sección~\ref{sec:robustez} \emph{nunca vio oclusión durante el
+entrenamiento}. Haber dado por buenas esas banderas habría invalidado la
+interpretación del resultado.
+
+Los hiperparámetros de optimización quedaron en los valores por defecto:
+ajustarlos sin un conjunto de validación dedicado habría equivalido a ajustar a
+\texttt{cis\_val}, que es una de las particiones que luego se reporta.
+
+\subsection{Métricas, reimplementadas}
+\label{sec:metricas}
+
+Las métricas de detección se calculan con código propio por tres razones.
+
+\emph{Clases sin positivos.} \texttt{deer} tiene 44 cajas de entrenamiento y
+\emph{cero} en \texttt{trans\_test}. Su AP ahí no es cero: no está definida,
+igual que un AUC sin positivos, y promediarla como cero castigaría al modelo con
+una especie que era imposible de detectar porque no estaba. El código devuelve
+indefinido y lista aparte las especies ausentes.
+
+\emph{Subconjuntos arbitrarios.} Los entregables \#3 y \#4 piden evaluar lo
+mismo por ubicación de cámara y por tamaño del objeto. Las predicciones se
+guardan una vez (con umbral de confianza 0.001, el de COCO, porque recortar las
+detecciones de baja confianza trunca la curva por el lado del recall alto e
+\emph{infla} la métrica) y cada corte se recalcula sobre una lista filtrada en
+segundos, en vez de una pasada completa del modelo por pregunta.
+
+\emph{Incertidumbre.} El bootstrap remuestrea \emph{imágenes} y no cajas: las
+cajas de una misma imagen comparten cámara, iluminación y a menudo el mismo
+animal en ráfaga, y remuestrearlas por separado daría un intervalo demasiado
+angosto.
+
+La AP usa la interpolación de todos los puntos con envolvente monótona de PASCAL
+VOC desde 2010~\cite{everingham2010pascal} y el emparejamiento codicioso por
+confianza de COCO~\cite{lin2014microsoft}, sin reutilizar cajas anotadas. Se
+reportan dos agregados: el \emph{macro}, que promedia las especies por igual y
+por lo tanto expone el desbalance, y el \emph{ponderado por soporte} al lado;
+la diferencia entre ambos \emph{es} la medida de ese desbalance. Como tercer
+indicador, la correlación de rangos de Spearman entre el soporte de cada especie
+y su AP; se usa Spearman y no Pearson porque el soporte va de 5 a 4\,800 cajas,
+escala en la que Pearson queda dominada por las dos especies más comunes.

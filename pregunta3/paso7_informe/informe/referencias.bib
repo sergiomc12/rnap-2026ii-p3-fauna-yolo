@@ -1,0 +1,156 @@
+% Referencias del informe — Pregunta 3 (cámaras trampa con YOLO)
+%
+% Las seis primeras sostienen decisiones concretas de este repositorio: cada
+% una se tradujo en código, no son relleno bibliográfico. Las siguientes dan el
+% contexto del dominio.
+%
+% El examen exige un mínimo de cinco referencias.
+
+% ---------------------------------------------------------------------------
+% LAS QUE SOSTIENEN LA SOLUCIÓN
+% ---------------------------------------------------------------------------
+
+% [1] El detector. La formulación de una sola pasada con cuadrícula, la
+% predicción conjunta de caja y clase, y la pérdida multi-término que combina
+% localización, confianza y clasificación. Material del curso: doc/yolo/.
+@inproceedings{redmon2016you,
+  title     = {You Only Look Once: Unified, Real-Time Object Detection},
+  author    = {Redmon, Joseph and Divvala, Santosh and Girshick, Ross and
+               Farhadi, Ali},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and
+               Pattern Recognition (CVPR)},
+  pages     = {779--788},
+  year      = {2016},
+}
+
+% [2] El conjunto de datos Y el diseño experimental del entregable #3. Define
+% Caltech Camera Traps y, sobre todo, la partición cis/trans por ubicación de
+% cámara: la razón por la que este trabajo no inventa su propio split. También
+% documenta el sesgo de fondo que el paso 5 mide con Grad-CAM.
+@inproceedings{beery2018recognition,
+  title     = {Recognition in Terra Incognita},
+  author    = {Beery, Sara and Van Horn, Grant and Perona, Pietro},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages     = {456--473},
+  year      = {2018},
+}
+
+% [3] Grad-CAM. El entregable #3 lo pide explícitamente sobre el backbone.
+% La adaptación a detección —derivar la suma de los puntajes de una clase sobre
+% las k anclas más confiadas en vez de un único logit— está en
+% pregunta3/paso5_generalizacion/gradcam_yolo.py.
+@inproceedings{selvaraju2017grad,
+  title     = {Grad-CAM: Visual Explanations from Deep Networks via
+               Gradient-based Localization},
+  author    = {Selvaraju, Ramprasaath R. and Cogswell, Michael and Das, Abhishek
+               and Vedantam, Ramakrishna and Parikh, Devi and Batra, Dhruv},
+  booktitle = {Proceedings of the IEEE International Conference on Computer
+               Vision (ICCV)},
+  pages     = {618--626},
+  year      = {2017},
+}
+
+% [4] La definición de mAP que se reimplementó en
+% pregunta3/paso4_evaluacion/metricas.py: el promedio sobre diez umbrales de
+% IoU de 0.50 a 0.95, y el emparejamiento codicioso por confianza con cajas
+% anotadas que no se reusan.
+@inproceedings{lin2014microsoft,
+  title     = {Microsoft COCO: Common Objects in Context},
+  author    = {Lin, Tsung-Yi and Maire, Michael and Belongie, Serge and
+               Hays, James and Perona, Pietro and Ramanan, Deva and
+               Doll{\'a}r, Piotr and Zitnick, C. Lawrence},
+  booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages     = {740--755},
+  year      = {2014},
+}
+
+% [5] El área bajo la curva precisión-recall con envolvente monótona e
+% interpolación de todos los puntos, que es la que usa ap_todos_los_puntos().
+% Documenta también por qué NO se usa la interpolación de 11 puntos.
+@article{everingham2010pascal,
+  title     = {The PASCAL Visual Object Classes (VOC) Challenge},
+  author    = {Everingham, Mark and Van Gool, Luc and Williams, Christopher K. I.
+               and Winn, John and Zisserman, Andrew},
+  journal   = {International Journal of Computer Vision},
+  volume    = {88},
+  number    = {2},
+  pages     = {303--338},
+  year      = {2010},
+}
+
+% [6] Mosaic. El aumento que pega cuatro imágenes en una, activado acá con
+% close_mosaic=10. Es de este trabajo, no del YOLO original, y la justificación
+% de usarlo en cámaras trampa —que rompe el fondo que el modelo memoriza— se
+% apoya en combinarlo con [2].
+@article{bochkovskiy2020yolov4,
+  title   = {YOLOv4: Optimal Speed and Accuracy of Object Detection},
+  author  = {Bochkovskiy, Alexey and Wang, Chien-Yao and
+             Liao, Hong-Yuan Mark},
+  journal = {arXiv preprint arXiv:2004.10934},
+  year    = {2020},
+}
+
+% ---------------------------------------------------------------------------
+% CONTEXTO DEL DOMINIO
+% ---------------------------------------------------------------------------
+
+% El antecedente de aprendizaje profundo sobre cámaras trampa a gran escala, y
+% la fuente del argumento del entregable #6: el modelo asiste la revisión
+% humana, no la reemplaza.
+@article{norouzzadeh2018automatically,
+  title   = {Automatically Identifying, Counting, and Describing Wild Animals
+             in Camera-Trap Images with Deep Learning},
+  author  = {Norouzzadeh, Mohammad Sadegh and Nguyen, Anh and Kosmala, Margaret
+             and Swanson, Alexandra and Palmer, Meredith S. and Packer, Craig
+             and Clune, Jeff},
+  journal = {Proceedings of the National Academy of Sciences},
+  volume  = {115},
+  number  = {25},
+  pages   = {E5716--E5725},
+  year    = {2018},
+}
+
+% MegaDetector: el detector de fauna desplegado en producción sobre este mismo
+% dominio. Es el punto de comparación realista para lo que acá se entrena.
+@article{beery2019efficient,
+  title   = {Efficient Pipeline for Camera Trap Image Review},
+  author  = {Beery, Sara and Morris, Dan and Yang, Siyu},
+  journal = {arXiv preprint arXiv:1907.06772},
+  year    = {2019},
+}
+
+% Modelos de ocupación con detección imperfecta. Es lo que el paso 6 NO hace:
+% su ocupación es naive, y esta referencia marca qué le falta para no ser un
+% estimador sesgado.
+@article{mackenzie2002estimating,
+  title   = {Estimating Site Occupancy Rates When Detection Probabilities Are
+             Less Than One},
+  author  = {MacKenzie, Darryl I. and Nichols, James D. and Lachman, Gideon B.
+             and Droege, Sam and Royle, J. Andrew and Langtimm, Catherine A.},
+  journal = {Ecology},
+  volume  = {83},
+  number  = {8},
+  pages   = {2248--2255},
+  year    = {2002},
+}
+
+% La metodología de cámaras trampa: eventos independientes, esfuerzo en
+% noches-cámara y tasas de detección, que es la base del paso 6.
+@book{oconnell2011camera,
+  title     = {Camera Traps in Animal Ecology: Methods and Analyses},
+  author    = {O'Connell, Allan F. and Nichols, James D. and
+               Karanth, K. Ullas},
+  publisher = {Springer},
+  year      = {2011},
+}
+
+% La implementación usada para el ajuste fino. Se cita como software, con la
+% versión exacta, porque los valores por defecto que aplica —escala, traslación,
+% close_mosaic— forman parte de las decisiones de entrenamiento documentadas.
+@misc{ultralytics2024yolo11,
+  title        = {Ultralytics YOLO11},
+  author       = {Jocher, Glenn and Qiu, Jing and Chaurasia, Ayush},
+  howpublished = {\url{https://github.com/ultralytics/ultralytics}},
+  note         = {versión 8.4.173},
+  year         = {2024},
+}

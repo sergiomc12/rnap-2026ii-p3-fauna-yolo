@@ -1,0 +1,36 @@
+# Dependencias de la Pregunta 3 (cámaras trampa / YOLO sobre CCT-20).
+#
+# Versiones fijadas desde el .venv con el que se produjeron los resultados del
+# informe (pip freeze filtrado). Python 3.10+ (el entorno de referencia usa
+# 3.14). Instalación:
+#
+#   python -m venv .venv
+#   .venv/Scripts/activate        # Windows;  source .venv/bin/activate en Unix
+#   pip install -r pregunta3/requirements.txt
+#
+# torch/torchvision: las ruedas del entorno de referencia son builds CUDA 12.8
+# (+cu128). En una máquina sin GPU, pip instala el build de CPU de estas mismas
+# versiones; para GPU, elegir la rueda de https://pytorch.org que corresponda a
+# la versión de CUDA instalada.
+
+# --- Detección y aprendizaje profundo ---
+ultralytics==8.4.191
+torch==2.11.0
+torchvision==0.26.0
+
+# --- Cómputo numérico e imágenes ---
+numpy==2.5.4
+opencv-python==5.0.0.93
+pillow==13.0.0
+
+# --- Datos y gráficos (usados por ultralytics al entrenar y graficar) ---
+pandas==3.1.0
+matplotlib==3.11.2
+PyYAML==6.0.3
+tqdm==4.70.1
+
+# --- Verificación del informe (conteo de páginas de cuerpo en paso 7) ---
+pypdf==6.21.3
+
+# pycocotools NO se usa: el mAP se reimplementa con código propio
+# (pregunta3/paso4_evaluacion/metricas.py), sin la API de COCO.

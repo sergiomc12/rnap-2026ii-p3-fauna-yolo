@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \begin{tabular}{ll@{\qquad}ll}
+    \toprule
+    Decisión & Valor & Decisión & Valor \\
+    \midrule
+    Modelo base & \texttt{yolo11n.pt} & Volteo horizontal / vertical & 0.5 / 0.0 \\
+    Resolución de entrada & 640 px & Mosaic (apagado en las últimas) & 1.0 (10 épocas) \\
+    Épocas / lote & 60 / 16 & Escala / traslación & $\pm$50\% / $\pm$10\% \\
+    Paciencia & 15 & HSV (h/s/v) & 0.015 / 0.5 / 0.4 \\
+    Semilla & 42 & Rotación / perspectiva & 0.0 / 0.0 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Decisiones de entrenamiento (entregable \#1). El volteo vertical, la rotación y la perspectiva van en cero por la misma razón: la cámara está fija en un poste y esas vistas no existen en el despliegue. Escala y traslación son los valores por defecto de la implementación, declarados explícitamente porque están activos y pesan: la escala de $\pm$50\% es el aumento más relevante para el entregable \#4.}
+  \label{tab:entrenamiento}
+\end{table}

@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering
+  \footnotesize
+  \begin{tabular}{lllrr}
+    \toprule
+    Barrido & Partición & Nivel & Cajas / imág. & mAP@0.5 \\
+    \midrule
+    tamaño & \texttt{cis\_test} & diminuto$^{\dagger}$ (0.000--0.00) & 18 & 0.1602 \\
+    tamaño & \texttt{cis\_test} & chico (0.002--0.01) & 891 & 0.5131 \\
+    tamaño & \texttt{cis\_test} & mediano (0.010--0.05) & 8\,727 & 0.8033 \\
+    tamaño & \texttt{cis\_test} & grande (0.050--1.01) & 3\,120 & 0.7341 \\
+    tamaño & \texttt{trans\_test} & diminuto$^{\dagger}$ (0.000--0.00) & 16 & 0.0913 \\
+    tamaño & \texttt{trans\_test} & chico (0.002--0.01) & 1\,719 & 0.2310 \\
+    tamaño & \texttt{trans\_test} & mediano (0.010--0.05) & 11\,878 & 0.4555 \\
+    tamaño & \texttt{trans\_test} & grande (0.050--1.01) & 4\,512 & 0.2852 \\
+    oclusión & \texttt{cis\textbackslash\{\}\_test} & sin tapar & 1\,500 & 0.7652 \\
+    oclusión & \texttt{cis\textbackslash\{\}\_test} & centro, 25\% & 1\,500 & 0.2375 \\
+    oclusión & \texttt{cis\textbackslash\{\}\_test} & centro, 50\% & 1\,500 & 0.0584 \\
+    oclusión & \texttt{cis\textbackslash\{\}\_test} & centro, 75\% & 1\,500 & 0.0044 \\
+    oclusión & \texttt{cis\textbackslash\{\}\_test} & inferior, 25\% & 1\,500 & 0.3699 \\
+    oclusión & \texttt{cis\textbackslash\{\}\_test} & inferior, 50\% & 1\,500 & 0.0647 \\
+    oclusión & \texttt{cis\textbackslash\{\}\_test} & inferior, 75\% & 1\,500 & 0.0234 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Robustez ante tamaño del objeto y ante oclusión sintética. En el barrido de tamaño, una imagen entra en un tramo solo si \emph{todas} sus cajas caen en el rango —filtrando caja por caja, las descartadas seguirían en la imagen y cada detección correcta de un animal fuera del rango contaría como falso positivo; $^{\dagger}$ menos de 50 cajas. En el de oclusión, el parche tapa la fracción indicada del \emph{área} de cada caja anotada sobre una submuestra fija por semilla: \texttt{centro} deja la silueta y quita la textura, \texttt{inferior} tapa desde el borde de abajo, como la vegetación real, y rompe también la silueta.}
+  \label{tab:robustez}
+\end{table}

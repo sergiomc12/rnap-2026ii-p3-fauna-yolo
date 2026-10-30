@@ -1,0 +1,30 @@
+{
+  "cis_test": {
+    "imagenes": 12696,
+    "propio_map50": 0.7463118780518159,
+    "propio_map50_95": 0.5025352929447251,
+    "ultralytics_map50": 0.7633240078056558,
+    "ultralytics_map50_95": 0.5146454495995196,
+    "clases_propias": 15,
+    "clases_ultralytics": 15,
+    "clases_sin_positivos": [],
+    "diferencia_map50": -0.017012129753839922,
+    "diferencia_map50_95": -0.012110156654794535,
+    "clases_con_cajas_y_sin_detecciones": []
+  },
+  "trans_test": {
+    "imagenes": 18033,
+    "propio_map50": 0.397820739283103,
+    "propio_map50_95": 0.272430768256002,
+    "ultralytics_map50": 0.43004148278432786,
+    "ultralytics_map50_95": 0.2922111213418311,
+    "clases_propias": 14,
+    "clases_ultralytics": 14,
+    "clases_sin_positivos": [
+      "deer"
+    ],
+    "diferencia_map50": -0.032220743501224836,
+    "diferencia_map50_95": -0.019780353085829094,
+    "clases_con_cajas_y_sin_detecciones": []
+  }
+}

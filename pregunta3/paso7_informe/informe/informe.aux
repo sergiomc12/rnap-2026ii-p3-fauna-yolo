@@ -1,0 +1,78 @@
+\relax 
+\providecommand \babel@aux [2]{\global \let \babel@toc \@gobbletwo }
+\@nameuse{bbl@beforestart}
+\citation{beery2018recognition}
+\babel@aux{spanish}{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introducción}{1}{}\protected@file@percent }
+\citation{redmon2016you}
+\citation{ultralytics2024yolo11}
+\citation{bochkovskiy2020yolov4}
+\citation{beery2018recognition}
+\citation{norouzzadeh2018automatically}
+\citation{beery2019efficient}
+\citation{lin2014microsoft}
+\citation{everingham2010pascal}
+\citation{selvaraju2017grad}
+\citation{oconnell2011camera}
+\citation{mackenzie2002estimating}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Trabajos relacionados}{2}{}\protected@file@percent }
+\citation{beery2018recognition}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Decisiones de entrenamiento (entregable \#1). El volteo vertical, la rotación y la perspectiva van en cero por la misma razón: la cámara está fija en un poste y esas vistas no existen en el despliegue. Escala y traslación son los valores por defecto de la implementación, declarados explícitamente porque están activos y pesan: la escala de $\pm $50\% es el aumento más relevante para el entregable \#4.}}{3}{}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:entrenamiento}{{1}{3}{Decisiones de entrenamiento}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Datos y método}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Conjunto de datos y particiones}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Decisiones de entrenamiento}{3}{}\protected@file@percent }
+\newlabel{sec:metodo_aumento}{{3.2}{3}{Decisiones de entrenamiento}{subsection.3.2}{}}
+\citation{everingham2010pascal}
+\citation{lin2014microsoft}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Resumen por partición. $\rho _s$ es la correlación de rangos de Spearman entre el soporte de cada especie y su AP@0.5. El intervalo sale de un bootstrap sobre imágenes, no sobre cajas: las cajas de una misma imagen no son independientes.}}{4}{}\protected@file@percent }
+\newlabel{tab:resumen}{{2}{4}{Desempeño y efecto del desbalance}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Métricas, reimplementadas}{4}{}\protected@file@percent }
+\newlabel{sec:metricas}{{3.3}{4}{Métricas, reimplementadas}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Resultados}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Validación de las métricas propias}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Desempeño y efecto del desbalance}{4}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Desglose por especie: a la izquierda ubicaciones vistas (\texttt  {cis\_test}), a la derecha nunca vistas (\texttt  {trans\_test}). `Det.' es cuántas detecciones emitió el modelo: un AP bajo con pocas detecciones es un problema de recall, y con muchas, de precisión. Esa distinción no se puede hacer con la AP sola, y se arreglan de manera distinta. Las especies \texttt  {deer} no tienen ninguna caja anotada en alguna de las dos particiones: su AP es indefinida (---), no cero, y queda fuera del promedio macro.}}{5}{}\protected@file@percent }
+\newlabel{tab:especies}{{3}{5}{Desempeño y efecto del desbalance}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Generalización entre ubicaciones}{5}{}\protected@file@percent }
+\newlabel{sec:generalizacion}{{4.3}{5}{Generalización entre ubicaciones}{subsection.4.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Razón de masa de Grad-CAM: fracción de la activación que cae dentro de las cajas anotadas, dividida por el área que esas cajas ocupan; vale 1.0 si el mapa es uniforme, es decir si el modelo no localiza nada. Arriba, el barrido que decidió qué capa del backbone se usa (`sin localizar' cuenta los mapas idénticamente nulos dentro del animal). Abajo, la razón por partición con la capa elegida (`sin localizar' cuenta las imágenes con razón $\leq 1.0$). `Chicos' son los animales que ocupan menos del 1\% del cuadro.}}{6}{}\protected@file@percent }
+\newlabel{tab:gradcam}{{4}{6}{Dónde mira el modelo}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Grad-CAM en una ubicación nunca vista. A la izquierda, la imagen con la caja anotada (un \texttt  {opossum} al pie de las rocas, abajo al centro); a la derecha, el mapa de activación de la clase correcta. La evidencia se reparte por la vegetación, las ramas y las rocas de todo el cuadro y apenas toca al animal; el modelo no acertó ninguna detección. Es el caso que la razón de masa cuantifica: el mapa no está vacío, lo que activa no es el animal.}}{6}{}\protected@file@percent }
+\newlabel{fig:gradcam}{{1}{6}{Dónde mira el modelo}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Dónde mira el modelo}{6}{}\protected@file@percent }
+\newlabel{sec:gradcam}{{4.4}{6}{Dónde mira el modelo}{subsection.4.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Robustez ante tamaño del objeto y ante oclusión sintética. En el barrido de tamaño, una imagen entra en un tramo solo si \emph  {todas} sus cajas caen en el rango —filtrando caja por caja, las descartadas seguirían en la imagen y cada detección correcta de un animal fuera del rango contaría como falso positivo; $^{\dagger }$ menos de 50 cajas. En el de oclusión, el parche tapa la fracción indicada del \emph  {área} de cada caja anotada sobre una submuestra fija por semilla: \texttt  {centro} deja la silueta y quita la textura, \texttt  {inferior} tapa desde el borde de abajo, como la vegetación real, y rompe también la silueta.}}{7}{}\protected@file@percent }
+\newlabel{tab:robustez}{{5}{7}{Robustez ante tamaño y oclusión}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Robustez ante tamaño y oclusión}{7}{}\protected@file@percent }
+\newlabel{sec:robustez}{{4.5}{7}{Robustez ante tamaño y oclusión}{subsection.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Reporte de actividad ecológica}{7}{}\protected@file@percent }
+\citation{beery2018recognition}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Reporte de actividad por especie. A la izquierda la demostración principal, cámaras nunca vistas (\texttt  {trans\_test}: 9 cámaras, 2\,090 noches-cámara); a la derecha el caso favorable, cámaras vistas en el entrenamiento (\texttt  {cis\_test}: 10 cámaras, 1\,131 noches-cámara). Un evento independiente agrupa detecciones de la misma especie y cámara separadas por menos de 30 minutos. `Error' es la diferencia relativa de los eventos del modelo contra el mismo reporte calculado desde las cajas anotadas a mano: es la validación del módulo, no un adorno. `Noct.' es el índice de nocturnidad, un control contra la historia natural conocida de cada especie.}}{8}{}\protected@file@percent }
+\newlabel{tab:actividad}{{6}{8}{Reporte de actividad ecológica}{table.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discusión crítica}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Qué significa la brecha de 0.35}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Lo que la métrica agregada no puede expresar}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Decisiones que podrían haber salido de otra forma}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Límites de lo que se midió}{9}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Uso responsable de IA en conservación}{9}{}\protected@file@percent }
+\newlabel{sec:responsable}{{6}{9}{Uso responsable de IA en conservación}{section.6}{}}
+\citation{beery2019efficient}
+\citation{mackenzie2002estimating}
+\bibstyle{plain}
+\bibdata{referencias}
+\bibcite{beery2019efficient}{{1}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusiones}{10}{}\protected@file@percent }
+\bibcite{beery2018recognition}{{2}{}{{}}{{}}}
+\bibcite{bochkovskiy2020yolov4}{{3}{}{{}}{{}}}
+\bibcite{everingham2010pascal}{{4}{}{{}}{{}}}
+\bibcite{ultralytics2024yolo11}{{5}{}{{}}{{}}}
+\bibcite{lin2014microsoft}{{6}{}{{}}{{}}}
+\bibcite{mackenzie2002estimating}{{7}{}{{}}{{}}}
+\bibcite{norouzzadeh2018automatically}{{8}{}{{}}{{}}}
+\bibcite{oconnell2011camera}{{9}{}{{}}{{}}}
+\bibcite{redmon2016you}{{10}{}{{}}{{}}}
+\bibcite{selvaraju2017grad}{{11}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\gdef \@abspage@last{11}

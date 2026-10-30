@@ -1,0 +1,73 @@
+{
+  "capa": 4,
+  "muestras_por_particion": 120,
+  "barrido": {
+    "4": {
+      "bloque": "C3k2",
+      "media": 1.5912910722477343,
+      "mediana": 1.0933530835873158,
+      "mapas_vacios": 0,
+      "imagenes": 30
+    },
+    "6": {
+      "bloque": "C3k2",
+      "media": 1.3797271115852814,
+      "mediana": 1.0088581091319695,
+      "mapas_vacios": 0,
+      "imagenes": 30
+    },
+    "8": {
+      "bloque": "C3k2",
+      "media": 1.3238710378102767,
+      "mediana": 0.6552233918928296,
+      "mapas_vacios": 9,
+      "imagenes": 30
+    },
+    "9": {
+      "bloque": "SPPF",
+      "media": 1.5616954311523845,
+      "mediana": 0.7451758303239601,
+      "mapas_vacios": 3,
+      "imagenes": 30
+    },
+    "10": {
+      "bloque": "C2PSA",
+      "media": 0.952879101148035,
+      "mediana": 0.7922246437903424,
+      "mapas_vacios": 5,
+      "imagenes": 30
+    }
+  },
+  "cis_test": {
+    "imagenes": 120,
+    "razon_media": 1.4574685749844685,
+    "razon_mediana": 1.1158489060590921,
+    "razon_desviacion": 0.9430840008018282,
+    "sin_localizacion": 52,
+    "razon_animales_chicos": 1.890658599717021,
+    "razon_animales_grandes": 1.4306337946913015
+  },
+  "trans_test": {
+    "imagenes": 120,
+    "razon_media": 1.2495838287117722,
+    "razon_mediana": 1.0,
+    "razon_desviacion": 0.9740022162443609,
+    "sin_localizacion": 62,
+    "razon_animales_chicos": 0.8906706847857693,
+    "razon_animales_grandes": 1.2718173863001085
+  },
+  "figuras": {
+    "cis_test": {
+      "acierto": "59af990f-23d2-11e8-a6a3-ec086b02610b.jpg",
+      "parcial": "58f1072a-23d2-11e8-a6a3-ec086b02610b.jpg",
+      "sin_deteccion": "59b2eb64-23d2-11e8-a6a3-ec086b02610b.jpg",
+      "falso_positivo": "59b4848a-23d2-11e8-a6a3-ec086b02610b.jpg"
+    },
+    "trans_test": {
+      "sin_deteccion": "598f7811-23d2-11e8-a6a3-ec086b02610b.jpg",
+      "acierto": "5930fde3-23d2-11e8-a6a3-ec086b02610b.jpg",
+      "parcial": "5991047a-23d2-11e8-a6a3-ec086b02610b.jpg",
+      "falso_positivo": "58eac89d-23d2-11e8-a6a3-ec086b02610b.jpg"
+    }
+  }
+}

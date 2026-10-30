@@ -1,0 +1,150 @@
+{
+  "particion": "cis_test",
+  "tramos": [
+    [
+      "diminuto",
+      0.0,
+      0.002
+    ],
+    [
+      "chico",
+      0.002,
+      0.01
+    ],
+    [
+      "mediano",
+      0.01,
+      0.05
+    ],
+    [
+      "grande",
+      0.05,
+      1.01
+    ]
+  ],
+  "tamano": {
+    "cis_test": [
+      {
+        "tramo": "diminuto",
+        "minimo": 0.0,
+        "maximo": 0.002,
+        "imagenes": 18,
+        "cajas": 18,
+        "map50": 0.1601571268237935,
+        "especies": 5
+      },
+      {
+        "tramo": "chico",
+        "minimo": 0.002,
+        "maximo": 0.01,
+        "imagenes": 859,
+        "cajas": 891,
+        "map50": 0.5130715827296709,
+        "especies": 12
+      },
+      {
+        "tramo": "mediano",
+        "minimo": 0.01,
+        "maximo": 0.05,
+        "imagenes": 8559,
+        "cajas": 8727,
+        "map50": 0.8033305945355397,
+        "especies": 13
+      },
+      {
+        "tramo": "grande",
+        "minimo": 0.05,
+        "maximo": 1.01,
+        "imagenes": 3097,
+        "cajas": 3120,
+        "map50": 0.7341033379301366,
+        "especies": 12
+      }
+    ],
+    "trans_test": [
+      {
+        "tramo": "diminuto",
+        "minimo": 0.0,
+        "maximo": 0.002,
+        "imagenes": 16,
+        "cajas": 16,
+        "map50": 0.09126984126984128,
+        "especies": 6
+      },
+      {
+        "tramo": "chico",
+        "minimo": 0.002,
+        "maximo": 0.01,
+        "imagenes": 1665,
+        "cajas": 1719,
+        "map50": 0.23104688358939449,
+        "especies": 12
+      },
+      {
+        "tramo": "mediano",
+        "minimo": 0.01,
+        "maximo": 0.05,
+        "imagenes": 11632,
+        "cajas": 11878,
+        "map50": 0.4555226337436152,
+        "especies": 12
+      },
+      {
+        "tramo": "grande",
+        "minimo": 0.05,
+        "maximo": 1.01,
+        "imagenes": 4432,
+        "cajas": 4512,
+        "map50": 0.285191728388457,
+        "especies": 12
+      }
+    ]
+  },
+  "oclusion": {
+    "centro": {
+      "0.00": {
+        "map50": 0.7652271782696172,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      },
+      "0.25": {
+        "map50": 0.2375444441180069,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      },
+      "0.50": {
+        "map50": 0.05835076879864657,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      },
+      "0.75": {
+        "map50": 0.004384904458673232,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      }
+    },
+    "inferior": {
+      "0.00": {
+        "map50": 0.7652271782696172,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      },
+      "0.25": {
+        "map50": 0.36990718527136424,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      },
+      "0.50": {
+        "map50": 0.0647268474772774,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      },
+      "0.75": {
+        "map50": 0.023425691301594703,
+        "imagenes": 1500,
+        "especies_presentes": 13
+      }
+    }
+  },
+  "oclusion_submuestra": 1500
+}

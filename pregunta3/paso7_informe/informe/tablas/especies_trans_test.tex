@@ -1,0 +1,27 @@
+\begin{table}[t]
+  \centering
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    Especie & Cajas & Detecciones & AP@0.5 & AP@0.5:0.95 \\
+    \midrule
+    \texttt{raccoon} & 4\,803 & 7\,793 & 0.7062 & 0.4536 \\
+    \texttt{opossum} & 4\,663 & 14\,337 & 0.8623 & 0.4384 \\
+    \texttt{bobcat} & 1\,979 & 3\,858 & 0.4536 & 0.3033 \\
+    \texttt{coyote} & 1\,902 & 6\,421 & 0.4255 & 0.2973 \\
+    \texttt{cat} & 1\,366 & 5\,920 & 0.2359 & 0.1520 \\
+    \texttt{car} & 1\,113 & 1\,488 & 0.9950 & 0.9950 \\
+    \texttt{dog} & 961 & 5\,116 & 0.6860 & 0.4599 \\
+    \texttt{squirrel} & 782 & 7\,756 & 0.1719 & 0.0934 \\
+    \texttt{rabbit} & 722 & 4\,968 & 0.3919 & 0.2025 \\
+    \texttt{skunk} & 273 & 3\,639 & 0.4930 & 0.3116 \\
+    \texttt{bird} & 180 & 17\,086 & 0.0132 & 0.0063 \\
+    \texttt{rodent} & 26 & 939 & 0.0018 & 0.0008 \\
+    \texttt{badger} & 15 & 9 & 0.1333 & 0.1000 \\
+    \texttt{fox} & 1 & 44 & 0.0000 & 0.0000 \\
+    \texttt{deer} & 0 & 646 & --- & --- \\
+    \bottomrule
+  \end{tabular}
+  \caption{Desglose por especie en \texttt{trans\_test}. mAP@0.5 macro 0.3978, ponderado por soporte 0.6263. Las especies \texttt{deer} no tienen ninguna caja anotada en este conjunto: su AP es indefinida (---), no cero, y queda fuera del promedio macro.}
+  \label{tab:especies_trans_test}
+\end{table}

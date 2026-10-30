@@ -1,0 +1,72 @@
+\begin{thebibliography}{10}
+
+\bibitem{beery2019efficient}
+Sara Beery, Dan Morris, and Siyu Yang.
+\newblock Efficient pipeline for camera trap image review.
+\newblock {\em arXiv preprint arXiv:1907.06772}, 2019.
+
+\bibitem{beery2018recognition}
+Sara Beery, Grant Van~Horn, and Pietro Perona.
+\newblock Recognition in terra incognita.
+\newblock In {\em Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pages 456--473, 2018.
+
+\bibitem{bochkovskiy2020yolov4}
+Alexey Bochkovskiy, Chien-Yao Wang, and Hong-Yuan~Mark Liao.
+\newblock Yolov4: Optimal speed and accuracy of object detection.
+\newblock {\em arXiv preprint arXiv:2004.10934}, 2020.
+
+\bibitem{everingham2010pascal}
+Mark Everingham, Luc Van~Gool, Christopher K.~I. Williams, John Winn, and
+  Andrew Zisserman.
+\newblock The pascal visual object classes (voc) challenge.
+\newblock {\em International Journal of Computer Vision}, 88(2):303--338, 2010.
+
+\bibitem{ultralytics2024yolo11}
+Glenn Jocher, Jing Qiu, and Ayush Chaurasia.
+\newblock Ultralytics yolo11.
+\newblock \url{https://github.com/ultralytics/ultralytics}, 2024.
+\newblock versión 8.4.173.
+
+\bibitem{lin2014microsoft}
+Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva
+  Ramanan, Piotr Doll{\'a}r, and C.~Lawrence Zitnick.
+\newblock Microsoft coco: Common objects in context.
+\newblock In {\em Proceedings of the European Conference on Computer Vision
+  (ECCV)}, pages 740--755, 2014.
+
+\bibitem{mackenzie2002estimating}
+Darryl~I. MacKenzie, James~D. Nichols, Gideon~B. Lachman, Sam Droege, J.~Andrew
+  Royle, and Catherine~A. Langtimm.
+\newblock Estimating site occupancy rates when detection probabilities are less
+  than one.
+\newblock {\em Ecology}, 83(8):2248--2255, 2002.
+
+\bibitem{norouzzadeh2018automatically}
+Mohammad~Sadegh Norouzzadeh, Anh Nguyen, Margaret Kosmala, Alexandra Swanson,
+  Meredith~S. Palmer, Craig Packer, and Jeff Clune.
+\newblock Automatically identifying, counting, and describing wild animals in
+  camera-trap images with deep learning.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  115(25):E5716--E5725, 2018.
+
+\bibitem{oconnell2011camera}
+Allan~F. O'Connell, James~D. Nichols, and K.~Ullas Karanth.
+\newblock {\em Camera Traps in Animal Ecology: Methods and Analyses}.
+\newblock Springer, 2011.
+
+\bibitem{redmon2016you}
+Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali Farhadi.
+\newblock You only look once: Unified, real-time object detection.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, pages 779--788, 2016.
+
+\bibitem{selvaraju2017grad}
+Ramprasaath~R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam,
+  Devi Parikh, and Dhruv Batra.
+\newblock Grad-cam: Visual explanations from deep networks via gradient-based
+  localization.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision (ICCV)}, pages 618--626, 2017.
+
+\end{thebibliography}

@@ -1,0 +1,79 @@
+\subsection{Qué significa la brecha de 0.35}
+
+El resultado central no es que el modelo generalice mal, que ya lo documentaron
+Beery et al.~\cite{beery2018recognition}, sino que ahora se puede decir cuánto
+de esa pérdida es realmente por el cambio de ubicación: el control de
+distribución descarta la explicación alternativa, porque solo $0.033$ de los
+$0.3485$ se explican por el cambio de prevalencia.
+
+El contraste con \texttt{car} es el argumento más fuerte. Si la caída viniera de
+un cambio general de dominio (otra cámara, otra iluminación, otro encuadre), el
+auto debería caer también. No cae. La diferencia no es el dominio: el auto es
+rígido, grande y de alto contraste, mientras que un \texttt{squirrel} a veinte
+metros es una mancha que se distingue porque \emph{esa} mancha, en \emph{ese}
+tronco, históricamente fue una ardilla.
+
+Grad-CAM lo confirma de forma independiente, y conviene decir hasta dónde. Una
+razón de masa mediana de $1.00$ en ubicaciones nuevas no prueba que el modelo
+mire el fondo: prueba que su evidencia no está más concentrada sobre el animal
+que si estuviera repartida al azar. Es más débil que ``mira el fondo'', pero es
+lo que el dato sostiene; para animales chicos ($0.89$) sí cruza el umbral de la
+anti-localización.
+
+\subsection{Lo que la métrica agregada no puede expresar}
+
+El caso de \texttt{deer} en \texttt{trans\_test} es instructivo más allá de este
+trabajo: cero cajas anotadas y 646 detecciones emitidas. La AP no está definida y
+se reporta como tal, pero ningún valor de AP (ni cero, ni indefinido) comunica
+que el modelo inventa ciervos. Con \texttt{bird} pasa el caso inverso: 17\,086
+detecciones para 180 cajas y AP $= 0.0132$, que un lector entiende como ``no
+detecta pájaros'' cuando el problema es el exceso de detecciones. De ahí que la
+tabla por especie incluya las detecciones junto al soporte: convierte un AP bajo
+en un diagnóstico, porque con pocas detecciones es falta de recall y con muchas,
+de precisión, y las dos se arreglan distinto.
+
+\subsection{Decisiones que podrían haber salido de otra forma}
+
+\emph{La resolución.} 640 px se tomó porque es la de los pesos preentrenados y
+permite un lote de 16. El barrido por tamaño muestra su costo; el experimento que
+lo cerraría, reentrenar a 960 px, no se hizo, así que se afirma el diagnóstico y
+no la mitigación.
+
+\emph{El tramo grande rinde peor que el mediano}, en las dos particiones
+($0.7341$ contra $0.8033$, y $0.2852$ contra $0.4555$), y no era lo esperado. La
+hipótesis plausible es que un animal que ocupa más del 5\% del cuadro está muy
+cerca del lente: entra parcialmente fuera de cuadro, con desenfoque de movimiento
+y, de noche, sobreexpuesto por el infrarrojo. Cuál domina no se midió, así que
+queda como observación.
+
+\emph{Una predicción equivocada sobre la oclusión.} Se diseñó el modo
+\texttt{inferior} esperando que fuera el caso más duro, porque rompe la silueta
+además de tapar la textura. Medido, al 25\% es claramente más benigno que tapar
+el centro ($0.3699$ contra $0.2375$): el modelo se apoya más en la textura
+interior que en el contorno, y al 50\% la diferencia se desvanece. Se registra
+porque la hipótesis estaba escrita antes de medir.
+
+\emph{Los negativos explícitos.} Las imágenes vacías podrían sumarse como
+fondo; no se hizo porque habría cambiado a la vez el tamaño del conjunto y la
+proporción fondo/objeto. Dado el volumen de falsos positivos en terreno nuevo,
+es la ablación pendiente más prometedora.
+
+\subsection{Límites de lo que se midió}
+
+\emph{Una sola corrida de entrenamiento.} Los intervalos de confianza
+capturan la variabilidad del \emph{muestreo de imágenes}, no la de la
+\emph{inicialización}: no se entrenaron varias semillas. La brecha de $0.35$ es
+mucho mayor que cualquier variación por semilla plausible, pero las diferencias
+chicas de este informe, como el tramo grande contra el mediano, no se pueden
+atribuir con esa evidencia.
+
+\emph{La oclusión es sintética.} Un rectángulo gris uniforme es más fácil de
+ignorar, o de confundir, que una rama real con textura. La dirección del
+resultado es contundente; su magnitud exacta no se traslada a oclusión natural.
+
+\emph{La ocupación del módulo ecológico es naive} y debe leerse como cota
+inferior. El error del reporte se midió sobre las dos particiones: en
+\texttt{cis\_test}, el caso favorable, va de $+2\%$ a $+100\%$ y siempre
+sobreestima; en \texttt{trans\_test} es mayor, hasta $+281\%$ en \texttt{bird}, y
+aparece en las dos direcciones, porque el modelo inventa eventos de las especies
+comunes y a la vez pierde los de \texttt{badger} ($-75\%$), la rara.

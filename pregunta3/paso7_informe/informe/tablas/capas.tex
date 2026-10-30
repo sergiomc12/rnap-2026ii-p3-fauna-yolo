@@ -1,0 +1,17 @@
+\begin{table}[t]
+  \centering
+  \small
+  \begin{tabular}{llrrc}
+    \toprule
+    Capa & Bloque & Razón media & Mediana & Mapas vacíos \\
+    \midrule
+    4 & \texttt{C3k2} & 1.59 & 1.09 & 0/30 \\
+    6 & \texttt{C3k2} & 1.38 & 1.01 & 0/30 \\
+    8 & \texttt{C3k2} & 1.32 & 0.66 & 9/30 \\
+    9 & \texttt{SPPF} & 1.56 & 0.75 & 3/30 \\
+    10 & \texttt{C2PSA} & 0.95 & 0.79 & 5/30 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Barrido de capas del backbone para Grad-CAM. La convención es usar la última capa convolucional; acá esa capa tiene una rejilla de $20\times20$ y produce mapas idénticamente nulos dentro del animal en buena parte de las imágenes. La capa elegida es la de mejor localización medida, no la convencional.}
+  \label{tab:capas}
+\end{table}

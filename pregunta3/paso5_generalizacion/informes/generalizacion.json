@@ -1,0 +1,611 @@
+{
+  "vista": {
+    "conjunto": "cis_test",
+    "imagenes": 12696,
+    "map50": 0.7463118780518159,
+    "map50_95": 0.5025352929447251,
+    "clases_sin_positivos": [],
+    "por_clase": {
+      "opossum": {
+        "soporte": 4010,
+        "predicciones": 8956,
+        "ap50": 0.915560686033406,
+        "ap50_95": 0.49964380473800063
+      },
+      "raccoon": {
+        "soporte": 981,
+        "predicciones": 6071,
+        "ap50": 0.9057392461743276,
+        "ap50_95": 0.593844223180102
+      },
+      "rabbit": {
+        "soporte": 1559,
+        "predicciones": 5091,
+        "ap50": 0.8435674603309117,
+        "ap50_95": 0.5266005393218338
+      },
+      "coyote": {
+        "soporte": 1182,
+        "predicciones": 3614,
+        "ap50": 0.8791540521311323,
+        "ap50_95": 0.6700398395088458
+      },
+      "bobcat": {
+        "soporte": 772,
+        "predicciones": 2723,
+        "ap50": 0.7246796134518548,
+        "ap50_95": 0.5211701724371541
+      },
+      "cat": {
+        "soporte": 1528,
+        "predicciones": 3425,
+        "ap50": 0.8658785238825544,
+        "ap50_95": 0.579644525808624
+      },
+      "dog": {
+        "soporte": 725,
+        "predicciones": 3335,
+        "ap50": 0.6627531444256889,
+        "ap50_95": 0.45997118730255737
+      },
+      "car": {
+        "soporte": 791,
+        "predicciones": 1041,
+        "ap50": 0.9999340332654725,
+        "ap50_95": 0.9977741145145558
+      },
+      "squirrel": {
+        "soporte": 510,
+        "predicciones": 4289,
+        "ap50": 0.669978977483719,
+        "ap50_95": 0.34334616163930576
+      },
+      "bird": {
+        "soporte": 752,
+        "predicciones": 7377,
+        "ap50": 0.5592209900390455,
+        "ap50_95": 0.27698588051067274
+      },
+      "skunk": {
+        "soporte": 162,
+        "predicciones": 356,
+        "ap50": 0.9430116852622347,
+        "ap50_95": 0.622163691122325
+      },
+      "rodent": {
+        "soporte": 146,
+        "predicciones": 3158,
+        "ap50": 0.8088764667624504,
+        "ap50_95": 0.43617827914004803
+      },
+      "deer": {
+        "soporte": 140,
+        "predicciones": 595,
+        "ap50": 0.4163232915344403,
+        "ap50_95": 0.26066697494685115
+      },
+      "badger": {
+        "soporte": 4,
+        "predicciones": 145,
+        "ap50": 0.0,
+        "ap50_95": 0.0
+      },
+      "fox": {
+        "soporte": 2,
+        "predicciones": 8,
+        "ap50": 1.0,
+        "ap50_95": 0.75
+      }
+    }
+  },
+  "nueva": {
+    "conjunto": "trans_test",
+    "imagenes": 18033,
+    "map50": 0.397820739283103,
+    "map50_95": 0.272430768256002,
+    "clases_sin_positivos": [
+      "deer"
+    ],
+    "por_clase": {
+      "opossum": {
+        "soporte": 4663,
+        "predicciones": 14337,
+        "ap50": 0.862289731064936,
+        "ap50_95": 0.43842098963237397
+      },
+      "raccoon": {
+        "soporte": 4803,
+        "predicciones": 7793,
+        "ap50": 0.7062081132914476,
+        "ap50_95": 0.4535838432393307
+      },
+      "rabbit": {
+        "soporte": 722,
+        "predicciones": 4968,
+        "ap50": 0.39187191648299513,
+        "ap50_95": 0.20248303395261885
+      },
+      "coyote": {
+        "soporte": 1902,
+        "predicciones": 6421,
+        "ap50": 0.4254739795238258,
+        "ap50_95": 0.29726150497972426
+      },
+      "bobcat": {
+        "soporte": 1979,
+        "predicciones": 3858,
+        "ap50": 0.453558983194645,
+        "ap50_95": 0.3033066073402775
+      },
+      "cat": {
+        "soporte": 1366,
+        "predicciones": 5920,
+        "ap50": 0.23585731397996423,
+        "ap50_95": 0.15197055437804483
+      },
+      "dog": {
+        "soporte": 961,
+        "predicciones": 5116,
+        "ap50": 0.6859534519998923,
+        "ap50_95": 0.45986585821332354
+      },
+      "car": {
+        "soporte": 1113,
+        "predicciones": 1488,
+        "ap50": 0.995031746275663,
+        "ap50_95": 0.9950317462756629
+      },
+      "squirrel": {
+        "soporte": 782,
+        "predicciones": 7756,
+        "ap50": 0.17186026835226897,
+        "ap50_95": 0.09336542046176823
+      },
+      "bird": {
+        "soporte": 180,
+        "predicciones": 17086,
+        "ap50": 0.013208371444754147,
+        "ap50_95": 0.006294975012233946
+      },
+      "skunk": {
+        "soporte": 273,
+        "predicciones": 3639,
+        "ap50": 0.4930213008940856,
+        "ap50_95": 0.31161164997738416
+      },
+      "rodent": {
+        "soporte": 26,
+        "predicciones": 939,
+        "ap50": 0.0018218401256310428,
+        "ap50_95": 0.0008345721212845032
+      },
+      "deer": {
+        "soporte": 0,
+        "predicciones": 646,
+        "ap50": null,
+        "ap50_95": null
+      },
+      "badger": {
+        "soporte": 15,
+        "predicciones": 9,
+        "ap50": 0.13333333333333333,
+        "ap50_95": 0.1
+      },
+      "fox": {
+        "soporte": 1,
+        "predicciones": 44,
+        "ap50": 0.0,
+        "ap50_95": 0.0
+      }
+    }
+  },
+  "brecha_map50": 0.34849113876871285,
+  "brecha_map50_95": 0.2301045246887231,
+  "bootstrap_vista": {
+    "map50": 0.7463118780518159,
+    "ic_bajo": 0.7235764948268183,
+    "ic_alto": 0.7563324042903763,
+    "repeticiones": 200,
+    "confianza": 0.95
+  },
+  "bootstrap_nueva": {
+    "map50": 0.397820739283103,
+    "ic_bajo": 0.3869353006280148,
+    "ic_alto": 0.44473484136567476,
+    "repeticiones": 200,
+    "confianza": 0.95
+  },
+  "intervalos_disjuntos": true,
+  "brechas": [
+    {
+      "nombre": "opossum",
+      "ap_vista": 0.915560686033406,
+      "ap_nueva": 0.862289731064936,
+      "soporte_vista": 4010,
+      "soporte_nueva": 4663,
+      "caida": 0.05327095496847001,
+      "prevalencia": 1.1628428927680798
+    },
+    {
+      "nombre": "raccoon",
+      "ap_vista": 0.9057392461743276,
+      "ap_nueva": 0.7062081132914476,
+      "soporte_vista": 981,
+      "soporte_nueva": 4803,
+      "caida": 0.19953113288287994,
+      "prevalencia": 4.896024464831804
+    },
+    {
+      "nombre": "rabbit",
+      "ap_vista": 0.8435674603309117,
+      "ap_nueva": 0.39187191648299513,
+      "soporte_vista": 1559,
+      "soporte_nueva": 722,
+      "caida": 0.45169554384791655,
+      "prevalencia": 0.46311738293778065
+    },
+    {
+      "nombre": "coyote",
+      "ap_vista": 0.8791540521311323,
+      "ap_nueva": 0.4254739795238258,
+      "soporte_vista": 1182,
+      "soporte_nueva": 1902,
+      "caida": 0.4536800726073065,
+      "prevalencia": 1.6091370558375635
+    },
+    {
+      "nombre": "bobcat",
+      "ap_vista": 0.7246796134518548,
+      "ap_nueva": 0.453558983194645,
+      "soporte_vista": 772,
+      "soporte_nueva": 1979,
+      "caida": 0.27112063025720984,
+      "prevalencia": 2.5634715025906734
+    },
+    {
+      "nombre": "cat",
+      "ap_vista": 0.8658785238825544,
+      "ap_nueva": 0.23585731397996423,
+      "soporte_vista": 1528,
+      "soporte_nueva": 1366,
+      "caida": 0.6300212099025901,
+      "prevalencia": 0.893979057591623
+    },
+    {
+      "nombre": "dog",
+      "ap_vista": 0.6627531444256889,
+      "ap_nueva": 0.6859534519998923,
+      "soporte_vista": 725,
+      "soporte_nueva": 961,
+      "caida": -0.023200307574203438,
+      "prevalencia": 1.3255172413793104
+    },
+    {
+      "nombre": "car",
+      "ap_vista": 0.9999340332654725,
+      "ap_nueva": 0.995031746275663,
+      "soporte_vista": 791,
+      "soporte_nueva": 1113,
+      "caida": 0.0049022869898094346,
+      "prevalencia": 1.407079646017699
+    },
+    {
+      "nombre": "squirrel",
+      "ap_vista": 0.669978977483719,
+      "ap_nueva": 0.17186026835226897,
+      "soporte_vista": 510,
+      "soporte_nueva": 782,
+      "caida": 0.49811870913145007,
+      "prevalencia": 1.5333333333333334
+    },
+    {
+      "nombre": "bird",
+      "ap_vista": 0.5592209900390455,
+      "ap_nueva": 0.013208371444754147,
+      "soporte_vista": 752,
+      "soporte_nueva": 180,
+      "caida": 0.5460126185942913,
+      "prevalencia": 0.2393617021276596
+    },
+    {
+      "nombre": "skunk",
+      "ap_vista": 0.9430116852622347,
+      "ap_nueva": 0.4930213008940856,
+      "soporte_vista": 162,
+      "soporte_nueva": 273,
+      "caida": 0.4499903843681491,
+      "prevalencia": 1.6851851851851851
+    },
+    {
+      "nombre": "rodent",
+      "ap_vista": 0.8088764667624504,
+      "ap_nueva": 0.0018218401256310428,
+      "soporte_vista": 146,
+      "soporte_nueva": 26,
+      "caida": 0.8070546266368194,
+      "prevalencia": 0.1780821917808219
+    },
+    {
+      "nombre": "deer",
+      "ap_vista": 0.4163232915344403,
+      "ap_nueva": null,
+      "soporte_vista": 140,
+      "soporte_nueva": 0,
+      "caida": null,
+      "prevalencia": 0.0
+    },
+    {
+      "nombre": "badger",
+      "ap_vista": 0.0,
+      "ap_nueva": 0.13333333333333333,
+      "soporte_vista": 4,
+      "soporte_nueva": 15,
+      "caida": -0.13333333333333333,
+      "prevalencia": 3.75
+    },
+    {
+      "nombre": "fox",
+      "ap_vista": 1.0,
+      "ap_nueva": 0.0,
+      "soporte_vista": 2,
+      "soporte_nueva": 1,
+      "caida": 1.0,
+      "prevalencia": 0.5
+    }
+  ],
+  "controlado": {
+    "conjunto": "trans_test_controlado",
+    "imagenes": 11000,
+    "map50": 0.43078464137206757,
+    "map50_95": 0.29448284471123676,
+    "clases_sin_positivos": [
+      "deer"
+    ],
+    "por_clase": {
+      "opossum": {
+        "soporte": 4010,
+        "predicciones": 10944,
+        "ap50": 0.8736171523495186,
+        "ap50_95": 0.442796304491177
+      },
+      "raccoon": {
+        "soporte": 981,
+        "predicciones": 3096,
+        "ap50": 0.6842624733669408,
+        "ap50_95": 0.4340433890670147
+      },
+      "rabbit": {
+        "soporte": 722,
+        "predicciones": 3406,
+        "ap50": 0.5054404958800169,
+        "ap50_95": 0.2617797723293301
+      },
+      "coyote": {
+        "soporte": 1182,
+        "predicciones": 3728,
+        "ap50": 0.513734019219483,
+        "ap50_95": 0.36477770592324427
+      },
+      "bobcat": {
+        "soporte": 771,
+        "predicciones": 2052,
+        "ap50": 0.40233741657701233,
+        "ap50_95": 0.273260339304895
+      },
+      "cat": {
+        "soporte": 1366,
+        "predicciones": 4009,
+        "ap50": 0.3172280637714196,
+        "ap50_95": 0.20273625720333593
+      },
+      "dog": {
+        "soporte": 726,
+        "predicciones": 3608,
+        "ap50": 0.6880232521837147,
+        "ap50_95": 0.46172245261083633
+      },
+      "car": {
+        "soporte": 791,
+        "predicciones": 1024,
+        "ap50": 0.9942545464780377,
+        "ap50_95": 0.9942545464780377
+      },
+      "squirrel": {
+        "soporte": 510,
+        "predicciones": 6232,
+        "ap50": 0.13799683021443887,
+        "ap50_95": 0.07547643162560248
+      },
+      "bird": {
+        "soporte": 180,
+        "predicciones": 11278,
+        "ap50": 0.0183709505806229,
+        "ap50_95": 0.0087482890225755
+      },
+      "skunk": {
+        "soporte": 162,
+        "predicciones": 1340,
+        "ap50": 0.6934720263399882,
+        "ap50_95": 0.4421662974801479
+      },
+      "rodent": {
+        "soporte": 26,
+        "predicciones": 595,
+        "ap50": 0.002247752247752248,
+        "ap50_95": 0.000998040421117344
+      },
+      "deer": {
+        "soporte": 0,
+        "predicciones": 422,
+        "ap50": null,
+        "ap50_95": null
+      },
+      "badger": {
+        "soporte": 5,
+        "predicciones": 6,
+        "ap50": 0.2,
+        "ap50_95": 0.16
+      },
+      "fox": {
+        "soporte": 1,
+        "predicciones": 10,
+        "ap50": 0.0,
+        "ap50_95": 0.0
+      }
+    }
+  },
+  "brecha_map50_controlada": 0.3155272366797483,
+  "ubicaciones_vista": {
+    "33": {
+      "imagenes": 1779,
+      "cajas": 1805,
+      "map50": 0.6867539733046264,
+      "especies_presentes": 8,
+      "muestra_suficiente": true
+    },
+    "38": {
+      "imagenes": 4401,
+      "cajas": 4467,
+      "map50": 0.790138814036061,
+      "especies_presentes": 9,
+      "muestra_suficiente": true
+    },
+    "43": {
+      "imagenes": 1592,
+      "cajas": 1674,
+      "map50": 0.5036278849174625,
+      "especies_presentes": 10,
+      "muestra_suficiente": true
+    },
+    "51": {
+      "imagenes": 527,
+      "cajas": 529,
+      "map50": 0.6595250078741504,
+      "especies_presentes": 9,
+      "muestra_suficiente": true
+    },
+    "61": {
+      "imagenes": 849,
+      "cajas": 1079,
+      "map50": 0.6978104928529677,
+      "especies_presentes": 7,
+      "muestra_suficiente": true
+    },
+    "88": {
+      "imagenes": 851,
+      "cajas": 871,
+      "map50": 0.7662486451315089,
+      "especies_presentes": 9,
+      "muestra_suficiente": true
+    },
+    "90": {
+      "imagenes": 219,
+      "cajas": 222,
+      "map50": 0.7214717959769149,
+      "especies_presentes": 7,
+      "muestra_suficiente": true
+    },
+    "108": {
+      "imagenes": 263,
+      "cajas": 280,
+      "map50": 0.5291208316834703,
+      "especies_presentes": 7,
+      "muestra_suficiente": true
+    },
+    "115": {
+      "imagenes": 629,
+      "cajas": 719,
+      "map50": 0.6732575307339395,
+      "especies_presentes": 8,
+      "muestra_suficiente": true
+    },
+    "120": {
+      "imagenes": 1586,
+      "cajas": 1618,
+      "map50": 0.7687702759751631,
+      "especies_presentes": 11,
+      "muestra_suficiente": true
+    }
+  },
+  "dispersion_vista": {
+    "n": 10,
+    "media": 0.6796725252486265,
+    "minimo": 0.5036278849174625,
+    "maximo": 0.790138814036061,
+    "rango": 0.28651092911859855,
+    "desviacion": 0.09157922740524663
+  },
+  "ubicaciones_nueva": {
+    "0": {
+      "imagenes": 1804,
+      "cajas": 1847,
+      "map50": 0.6320127137380773,
+      "especies_presentes": 11,
+      "muestra_suficiente": true
+    },
+    "7": {
+      "imagenes": 1373,
+      "cajas": 1410,
+      "map50": 0.671695997781602,
+      "especies_presentes": 8,
+      "muestra_suficiente": true
+    },
+    "28": {
+      "imagenes": 933,
+      "cajas": 969,
+      "map50": 0.36230335002689307,
+      "especies_presentes": 10,
+      "muestra_suficiente": true
+    },
+    "40": {
+      "imagenes": 795,
+      "cajas": 851,
+      "map50": 0.22179461071325365,
+      "especies_presentes": 10,
+      "muestra_suficiente": true
+    },
+    "46": {
+      "imagenes": 4242,
+      "cajas": 4349,
+      "map50": 0.2367058378875949,
+      "especies_presentes": 12,
+      "muestra_suficiente": true
+    },
+    "78": {
+      "imagenes": 1663,
+      "cajas": 1702,
+      "map50": 0.24847763632124192,
+      "especies_presentes": 10,
+      "muestra_suficiente": true
+    },
+    "100": {
+      "imagenes": 4265,
+      "cajas": 4548,
+      "map50": 0.5152205585728798,
+      "especies_presentes": 11,
+      "muestra_suficiente": true
+    },
+    "105": {
+      "imagenes": 1823,
+      "cajas": 1938,
+      "map50": 0.4227030329695984,
+      "especies_presentes": 8,
+      "muestra_suficiente": true
+    },
+    "130": {
+      "imagenes": 1135,
+      "cajas": 1172,
+      "map50": 0.3716179787089346,
+      "especies_presentes": 10,
+      "muestra_suficiente": true
+    }
+  },
+  "dispersion_nueva": {
+    "n": 9,
+    "media": 0.4091701907466751,
+    "minimo": 0.22179461071325365,
+    "maximo": 0.671695997781602,
+    "rango": 0.44990138706834837,
+    "desviacion": 0.15786447604861417
+  }
+}

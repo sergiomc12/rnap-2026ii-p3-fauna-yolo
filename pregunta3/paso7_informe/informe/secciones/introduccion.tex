@@ -1,0 +1,48 @@
+Una cámara trampa es un sensor que dispara al detectar movimiento y guarda la
+fotografía sin más contexto. Un proyecto de monitoreo despliega decenas y
+acumula cientos de miles de imágenes por temporada, de las cuales la gran
+mayoría no contiene ningún animal: una rama moviéndose con el viento o un cambio
+de iluminación bastan para activar el disparador. Revisarlas a mano es el cuello
+de botella real del monitoreo de fauna, y es la tarea que un detector puede
+absorber.
+
+El problema tiene tres dificultades que no son accidentales del conjunto elegido
+sino propias del dominio, y las tres condicionan el diseño de este trabajo.
+
+\emph{El 70\% de las imágenes está vacío.} Un detector no se entrena con
+imágenes sin objeto, de modo que el conjunto útil es una fracción del total. Pero
+la decisión de qué hacer con las vacías no es trivial: tratarlas como una clase
+más sería un error conceptual, porque la ausencia de cajas ya expresa que no hay
+nada que detectar.
+
+\emph{El desbalance es de factor 500.} La especie más común tiene 2\,514 cajas
+de entrenamiento y la más rara, cinco. Con cinco ejemplos no hay nada que
+aprender, y una métrica agregada que promedie todas las especies por igual lo
+dirá; una que pondere por frecuencia lo esconderá. Reportar las dos, y la
+diferencia entre ellas, es la única forma honesta de describir el resultado.
+
+\emph{El modelo tiende a memorizar el fondo.} Cada cámara está fija en un
+poste y produce miles de imágenes del mismo paisaje. Un modelo que aprende
+``cuando aparece algo en este tronco, es un zorro'' funciona en esa cámara y
+falla en la siguiente. Beery et al.~\cite{beery2018recognition} documentaron el
+fenómeno y diseñaron para medirlo la partición que este trabajo usa: conjuntos
+de prueba en las \emph{mismas} ubicaciones del entrenamiento (\emph{cis}) y en
+ubicaciones \emph{nunca vistas} (\emph{trans}).
+
+Sobre esa base, el trabajo ajusta un detector YOLO y responde cinco preguntas
+que el enunciado plantea: qué desempeño alcanza y cómo se reparte entre especies;
+cuánto pierde al cambiar de ubicación; dónde mira realmente para decidir; cuánto
+resiste la oclusión y la lejanía del animal; y qué reporte ecológico se puede
+construir con sus salidas sin fingir una precisión que no tiene.
+
+Las contribuciones, en orden de lo que aportan por encima de la receta estándar,
+son cuatro. Primero, una reimplementación propia de las métricas que distingue
+\emph{AP indefinida} de \emph{AP cero} para las especies ausentes de un conjunto
+y permite recalcular cualquier subconjunto sin volver a correr el modelo.
+Segundo, un control de distribución que separa la pérdida por cambio de fondo de
+la del cambio de prevalencia de especies, dos efectos que la comparación directa
+\emph{cis}/\emph{trans} confunde. Tercero, una adaptación de Grad-CAM a detección
+con la capa elegida por medición y no por convención, con un indicador de cuánta
+evidencia cae sobre el animal. Y cuarto, un módulo de monitoreo que además de
+producir el reporte de actividad lo \emph{valida} contra las anotaciones humanas,
+midiendo el error especie por especie.

@@ -1,0 +1,50 @@
+# .gitignore de la Pregunta 3 (repositorio PÚBLICO).
+#
+# Criterio: se versiona el CÓDIGO, el INFORME y los RESULTADOS en JSON/figuras;
+# se excluyen los artefactos regenerables y pesados (dataset, pesos, HLS, caché)
+# y cualquier secreto. Las rutas son relativas a pregunta3/.
+#
+# Se conservan a propósito (NO ignorar): *.py, *.tex, *.pdf, *.bib, *.sty, los
+# JSON de resultados (paso*/**/informes/*.json, resumen.json de las corridas) y
+# las figuras del informe (paso7_informe/informe/figuras/, paso5.../figuras/).
+# Por eso NO hay una regla global `*.jpg`: eso borraría esas figuras.
+
+# --- Datos: imágenes crudas de CCT-20 y derivados (18+ GB, se descargan) ---
+datos/
+data/
+paso1_datos/images/
+paso1_datos/imagenes/
+paso1_datos/labels/
+paso1_datos/raw/
+paso2_preprocesamiento/dataset/
+
+# --- Pesos de modelo (se obtienen al entrenar o descargar) ---
+*.pt
+*.pth
+runs/
+yolo*.pt
+paso3_modelo/corridas/**/*.pt
+
+# --- Predicciones volcadas del paso 4 (regenerables, decenas de MB) ---
+paso4_evaluacion/predicciones/
+
+# --- Python / entornos / caché ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+cache/
+**/cache/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Secretos: nunca se versionan ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+kaggle.json

@@ -1,0 +1,14 @@
+\begin{table}[t]
+  \centering
+  \small
+  \begin{tabular}{lrrrr}
+    \toprule
+    Modo & 0\% & 25\% & 50\% & 75\% \\
+    \midrule
+    \texttt{centro} & 0.7652 & 0.2375 & 0.0584 & 0.0044 \\
+    \texttt{inferior} & 0.7652 & 0.3699 & 0.0647 & 0.0234 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Robustez ante oclusión sintética sobre 1\,500 imágenes fijas por semilla. El parche tapa la fracción indicada del \emph{área} de cada caja anotada. \texttt{centro} deja la silueta y quita la textura; \texttt{inferior} tapa desde el borde de abajo, como la vegetación real, y rompe también la silueta.}
+  \label{tab:oclusion}
+\end{table}

@@ -1,0 +1,20 @@
+\begin{table}[t]
+  \centering
+  \small
+  \begin{tabular}{llcrrr}
+    \toprule
+    Partición & Tramo & Fracción del cuadro & Imág. & Cajas & mAP@0.5 \\
+    \midrule
+    \texttt{cis\_test} & diminuto$^{\dagger}$ & 0.000--0.00 & 18 & 18 & 0.1602 \\
+    \texttt{cis\_test} & chico & 0.002--0.01 & 859 & 891 & 0.5131 \\
+    \texttt{cis\_test} & mediano & 0.010--0.05 & 8\,559 & 8\,727 & 0.8033 \\
+    \texttt{cis\_test} & grande & 0.050--1.01 & 3\,097 & 3\,120 & 0.7341 \\
+    \texttt{trans\_test} & diminuto$^{\dagger}$ & 0.000--0.00 & 16 & 16 & 0.0913 \\
+    \texttt{trans\_test} & chico & 0.002--0.01 & 1\,665 & 1\,719 & 0.2310 \\
+    \texttt{trans\_test} & mediano & 0.010--0.05 & 11\,632 & 11\,878 & 0.4555 \\
+    \texttt{trans\_test} & grande & 0.050--1.01 & 4\,432 & 4\,512 & 0.2852 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Robustez ante el tamaño del objeto. Una imagen entra en un tramo solo si \emph{todas} sus cajas caen en el rango; filtrando caja por caja, las descartadas seguirían en la imagen y cada detección correcta de un animal fuera del rango contaría como falso positivo. $^{\dagger}$ menos de 50 cajas.}
+  \label{tab:tamano}
+\end{table}

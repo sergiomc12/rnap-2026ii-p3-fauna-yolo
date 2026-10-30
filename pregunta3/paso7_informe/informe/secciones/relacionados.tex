@@ -1,0 +1,48 @@
+\emph{Detección en una sola pasada.} YOLO~\cite{redmon2016you} reformuló la
+detección como una única regresión sobre una cuadrícula, con una pérdida que
+combina localización, confianza y clasificación. Lo relevante acá no es la
+arquitectura original sino su consecuencia: el modelo ve la imagen completa de
+una vez, de modo que el contexto global entra en cada predicción. En un dominio
+donde el fondo es constante por cámara, eso es a la vez la razón de su velocidad
+y la raíz del sesgo que la Sección~\ref{sec:generalizacion} mide. La
+implementación es YOLO11~\cite{ultralytics2024yolo11}, y de la línea
+YOLOv4~\cite{bochkovskiy2020yolov4} se toma \emph{mosaic}.
+
+\emph{Reconocimiento en terra incognita.} Beery
+et al.~\cite{beery2018recognition} introdujeron Caltech Camera Traps y mostraron
+que el desempeño cae en ubicaciones nuevas. Su aporte metodológico, separar los
+conjuntos por tipo de ubicación en vez de aleatoriamente, es lo que hace que el
+experimento de generalización de este trabajo sea comparable con la literatura
+en lugar de depender de una partición inventada. Este trabajo agrega un control
+que ese diseño no incluye: las particiones \emph{cis} y \emph{trans} también
+difieren en la mezcla de especies, y sin controlarlo parte de la caída se
+atribuiría al fondo cuando viene de la prevalencia.
+
+\emph{Aprendizaje profundo sobre cámaras trampa.} Norouzzadeh
+et al.~\cite{norouzzadeh2018automatically} mostraron a gran escala que estas
+imágenes se pueden clasificar y contar automáticamente con precisión comparable
+a la de voluntarios humanos, y plantearon la pregunta operativa que sigue
+abierta: qué fracción del trabajo se puede automatizar sin degradar el dato.
+MegaDetector~\cite{beery2019efficient} es la respuesta desplegada (un detector
+genérico que filtra las imágenes vacías y deja la especie a un segundo paso o a
+un humano), y la Sección~\ref{sec:responsable} argumenta por qué los resultados
+de este trabajo respaldan esa separación.
+
+\emph{Métricas y explicabilidad.} La definición de mAP es la de
+COCO~\cite{lin2014microsoft} con el área bajo la curva precisión-recall de
+PASCAL VOC desde 2010~\cite{everingham2010pascal}, no la interpolación de once
+puntos de 2007, que sobreestima. Grad-CAM~\cite{selvaraju2017grad} supone un
+clasificador con un logit por clase; adaptarlo a un detector exige elegir qué
+escalar derivar, y la Sección~\ref{sec:gradcam} argumenta esa elección.
+
+\emph{Metodología de monitoreo.} El módulo del entregable \#5 sigue las
+convenciones del dominio~\cite{oconnell2011camera}: eventos independientes con
+una ventana de silencio, esfuerzo en noches-cámara y tasas normalizadas por ese
+esfuerzo. La ocupación que reporta es \emph{naive}; corregirla por detección
+imperfecta requiere el marco de MacKenzie et
+al.~\cite{mackenzie2002estimating}, que queda señalado como lo que falta.
+
+\emph{Material del curso.} El laboratorio de la asignatura cubre YOLO v1 desde
+cero y el ajuste fino con la biblioteca, incluidas funciones de NMS y de
+evaluación de mAP; se usó como punto de partida conceptual. El código de este
+repositorio es propio y ningún cuaderno público de terceros se copió.

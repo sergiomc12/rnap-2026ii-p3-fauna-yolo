@@ -1,0 +1,74 @@
+% Informe de la Pregunta 3, Examen Parcial de Redes Neuronales y Aprendizaje Profundo
+%
+% Compilar:
+%   python pregunta3/paso7_informe/compilar_informe.py
+% o directamente:
+%   latexmk -pdf informe.tex
+%
+% Todas las tablas se generan desde los JSON de las corridas con
+% pregunta3/paso7_informe/generar_tablas.py: ningún número de este documento
+% se transcribió a mano.
+
+\documentclass{article}
+\usepackage[preprint]{neurips}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\title{Detección y clasificación de fauna en cámaras trampa con YOLO:
+       generalización entre ubicaciones, robustez y monitoreo ecológico}
+
+\author{%
+  Anónimo 1 \quad Anónimo 2 \quad Anónimo 3 \quad Anónimo 4 \quad Anónimo 5 \\
+  Facultad de Ingeniería Industrial y de Sistemas \\
+  Universidad Nacional de Ingeniería
+}
+
+\date{31 de octubre de 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{secciones/resumen}
+\end{abstract}
+
+\section{Introducción}
+\input{secciones/introduccion}
+
+\section{Trabajos relacionados}
+\input{secciones/relacionados}
+
+\section{Datos y método}
+\input{secciones/metodo}
+
+\section{Resultados}
+\input{secciones/resultados}
+
+\section{Discusión crítica}
+\input{secciones/discusion}
+
+\section{Uso responsable de IA en conservación}
+\input{secciones/responsable}
+
+\section{Conclusiones}
+\input{secciones/conclusiones}
+
+\section*{Reproducibilidad}
+Todo se reproduce con un único comando, \texttt{python
+pregunta3/paso7\_informe/ejecutar\_todo.py} (en el README), que va de la descarga
+a este documento y se retoma sin repetir lo hecho. Las 113 pruebas propias
+(\texttt{tests/test\_p3\_*.py}) fijan la definición de AP y la agrupación en
+eventos.
+
+{\small
+\bibliographystyle{plain}
+\bibliography{referencias}
+}
+
+\end{document}
