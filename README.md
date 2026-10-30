@@ -199,3 +199,11 @@ El examen es explícito:
 
 El lab del curso es material propio y sirve de base. Cualquier cuaderno público
 de Kaggle o Roboflow se lee y se cita en trabajos relacionados, nunca se copia.
+
+## Pesos preentrenados
+
+El peso del YOLO entrenado esta publicado como *release*:
+
+**https://github.com/sergiomc12/rnap-2026ii-p3-fauna-yolo/releases/tag/v1.0-pesos**
+
+El asset `yolo11n_640_best.pt` va en `pregunta3/paso3_modelo/corridas/yolo11n_640/weights/best.pt`. No hace falta para leer el informe ni correr el notebook; solo para reusar el detector sin reentrenar. El dataset CCT-20 se descarga con los scripts del repo.
