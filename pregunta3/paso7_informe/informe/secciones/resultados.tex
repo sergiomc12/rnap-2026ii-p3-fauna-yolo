@@ -4,11 +4,10 @@ Reimplementar el mAP obliga a demostrar que coincide con la implementación de
 referencia sobre los mismos datos; sin eso, una diferencia entre particiones
 podría ser un error de la reimplementación disfrazado de hallazgo. El mAP@0.5
 propio es 0.7463 contra 0.7633 de la biblioteca en \texttt{cis\_test} y 0.3978
-contra 0.4300 en \texttt{trans\_test}. La diferencia es sistemática y del signo
-esperado (la biblioteca interpola la curva en 101 puntos y acá se integra con
-todos los puntos, que es menos optimista), y la brecha entre particiones, el
-resultado central, da 0.333 con una y 0.349 con la otra: no depende de cuál se
-use.
+contra 0.4300 en \texttt{trans\_test}: una diferencia sistemática y del signo
+esperado (la biblioteca interpola la curva en 101 puntos y aquí se integra con
+todos). La brecha entre particiones, el resultado central, da 0.333 con una y
+0.349 con la otra: no depende de cuál se use.
 
 \subsection{Desempeño y efecto del desbalance}
 
@@ -64,7 +63,6 @@ mientras \texttt{squirrel} cae de 0.6700 a 0.1719, \texttt{bird} de 0.5592 a
 dominio, porque la imagen, la cámara y la iluminación cambian igual para el auto:
 es que la evidencia que el modelo usa para los animales estaba en el fondo.
 
-Dos casos merecen nombrarse porque son los que la métrica agregada esconde.
 \texttt{bird} emite 17\,086 detecciones para 180 cajas reales en
 \texttt{trans\_test}, y \texttt{deer}, que no tiene \emph{ninguna} caja en esa
 partición, recibe 646 detecciones: su AP es indefinida, no cero.
@@ -88,23 +86,21 @@ celda. Las tres capas de esa resolución dan mapas nulos dentro del animal en 3
 a 9 de cada 30 imágenes: no miran el fondo, no tienen resolución para decir
 nada.
 
-La capa elegida es la de $80\times80$. Conviene ser preciso sobre qué la
-distingue: la razón de masa \emph{media} no la separa de la capa SPPF (1.59
-contra 1.56), y afirmar lo contrario sería forzar el dato. La separan la mediana
+La capa elegida es la de $80\times80$. La razón de masa \emph{media} no la
+separa de la capa SPPF (1.59 contra 1.56), y afirmar lo contrario sería forzar
+el dato. La separan la mediana
 (1.09 contra 0.75) y el recuento de mapas nulos (0 de 30 contra 3 de 30). La
 media de la capa SPPF está sostenida por unos pocos casos buenos; su mediana
 muestra que en la mitad de las imágenes no localiza mejor que un mapa uniforme.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.5\textwidth]{figuras/trans_test_falso_positivo.jpg}
-  \caption{Grad-CAM en una ubicación nunca vista. A la izquierda, la imagen con
-    la caja anotada (un \texttt{opossum} al pie de las rocas, abajo al centro);
-    a la derecha, el mapa de activación de la clase correcta. La evidencia se
-    reparte por la vegetación, las ramas y las rocas de todo el cuadro y apenas
-    toca al animal; el modelo no acertó ninguna detección. Es el caso que la
-    razón de masa cuantifica: el mapa no está vacío, lo que activa no es el
-    animal.}
+  \includegraphics[width=0.40\textwidth]{figuras/trans_test_falso_positivo.jpg}
+  \caption{Grad-CAM en una ubicación nunca vista. Izquierda: la imagen con la
+    caja anotada (un \texttt{opossum} al pie de las rocas); derecha: el mapa de
+    activación de la clase correcta, repartido por la vegetación y las rocas y
+    apenas sobre el animal, que el modelo no detectó. Es el caso que la razón de
+    masa cuantifica.}
   \label{fig:gradcam}
 \end{figure}
 
@@ -118,7 +114,7 @@ ubicaciones nuevas la evidencia del modelo no está más concentrada sobre el
 animal que si estuviera repartida al azar. En 52 de 120 imágenes conocidas y 62
 de 120 nuevas la razón no supera 1.0.
 
-El desglose por tamaño es más específico y más incómodo. Para animales que
+El desglose por tamaño es más específico. Para animales que
 ocupan menos del 1\% del cuadro, la razón es 1.89 en ubicaciones conocidas y
 0.89 en ubicaciones nuevas, por debajo de 1.0: la
 activación está \emph{menos} concentrada sobre el animal que un mapa uniforme.
@@ -138,8 +134,9 @@ reducción de 3.2 veces. Un animal lejano, que ya ocupaba pocos píxeles, queda 
 unos pocos. El barrido por tamaño cuantifica ese costo, el caso dominante del
 dominio y no una situación marginal.
 
-La oclusión es sintética porque el conjunto no trae esa anotación; la
-alternativa era no responder el entregable. El parche tapa la fracción indicada
+La oclusión es sintética porque el conjunto no trae esa anotación; los niveles
+de 25\%, 50\% y 75\% del área aproximan los niveles bajo, medio y alto que pide
+el entregable. El parche tapa la fracción indicada
 del \emph{área} de cada caja anotada, y los dos modos no miden lo mismo
 (\texttt{centro} deja la silueta y quita la textura; \texttt{inferior} la tapa
 desde abajo, como la vegetación real). La interpretación es limpia porque, como
@@ -148,14 +145,13 @@ durante el entrenamiento.
 
 \subsection{Reporte de actividad ecológica}
 
-El entregable \#5 pide demostrar el módulo sobre una cámara no vista en el
-entrenamiento, el caso de despliegue real. La demostración principal es por eso
-sobre \texttt{trans\_test} (9 cámaras nunca vistas, 2\,090 noches-cámara), con
-\texttt{cis\_test} al lado como caso favorable. Las 18\,846 detecciones por
-encima de 0.25 se agrupan en 6\,637 eventos independientes (ventana de 30
-minutos) contra 4\,819 de las cajas anotadas; en \texttt{cis\_test} son 13\,559
-detecciones y 3\,706 eventos. Contar detecciones en vez de eventos habría
-inflado la actividad, porque las cámaras disparan ráfagas.
+El entregable \#5 pide demostrar el módulo sobre una cámara no vista, el caso de
+despliegue real: la demostración principal es sobre \texttt{trans\_test} (9
+cámaras nuevas, 2\,090 noches-cámara), con \texttt{cis\_test} como caso
+favorable. Las 18\,846 detecciones por encima de 0.25 se agrupan en 6\,637
+eventos independientes (ventana de 30 minutos) contra 4\,819 de las cajas
+anotadas, y 13\,559 en 3\,706 eventos en \texttt{cis\_test}; contar detecciones
+en vez de eventos habría inflado la actividad.
 
 \input{tablas/actividad_comparada}
 
@@ -164,11 +160,15 @@ aun en cámaras nuevas, sin recibir esa información: 2\% para \texttt{squirrel}
 20\% para \texttt{bird} y 4\% para \texttt{car} (diurnos); 73\% para
 \texttt{opossum}, 70\% para \texttt{raccoon} y 71\% para \texttt{skunk}
 (nocturnos); 58\% para \texttt{coyote} y 52\% para \texttt{bobcat}
-(crepusculares). Es un control que cuesta una columna y detecta errores que el
-mAP no ve.
+(crepusculares). El reporte por periodo del día
+(Cuadro~\ref{tab:actividad_franjas}) desglosa esa actividad en las cinco franjas
+horarias, y cada especie concentra sus eventos donde le corresponde por historia
+natural.
+
+\input{tablas/actividad_franjas}
 
 El error contra las anotaciones es lo que decide para qué sirve el módulo. En
-\texttt{cis\_test} es siempre positivo y chico, de $+2\%$ a $+100\%$, con las
+\texttt{cis\_test} es siempre positivo y pequeño, de $+2\%$ a $+100\%$, con las
 especies de más datos cerca del valor real (\texttt{opossum} $+2\%$, \texttt{car}
 $+2\%$) y las intermedias disparadas (\texttt{raccoon} $+74\%$). En
 \texttt{trans\_test} crece (\texttt{cat} $+234\%$, \texttt{bird} $+281\%$) y, a

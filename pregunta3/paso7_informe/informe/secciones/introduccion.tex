@@ -18,8 +18,7 @@ nada que detectar.
 \emph{El desbalance es de factor 500.} La especie más común tiene 2\,514 cajas
 de entrenamiento y la más rara, cinco. Con cinco ejemplos no hay nada que
 aprender, y una métrica agregada que promedie todas las especies por igual lo
-dirá; una que pondere por frecuencia lo esconderá. Reportar las dos, y la
-diferencia entre ellas, es la única forma honesta de describir el resultado.
+dirá; una que pondere por frecuencia lo esconderá. Se reportan ambas.
 
 \emph{El modelo tiende a memorizar el fondo.} Cada cámara está fija en un
 poste y produce miles de imágenes del mismo paisaje. Un modelo que aprende
@@ -35,14 +34,13 @@ cuánto pierde al cambiar de ubicación; dónde mira realmente para decidir; cu�
 resiste la oclusión y la lejanía del animal; y qué reporte ecológico se puede
 construir con sus salidas sin fingir una precisión que no tiene.
 
-Las contribuciones, en orden de lo que aportan por encima de la receta estándar,
-son cuatro. Primero, una reimplementación propia de las métricas que distingue
+Las contribuciones son cuatro. Primero, una reimplementación propia de las
+métricas que distingue
 \emph{AP indefinida} de \emph{AP cero} para las especies ausentes de un conjunto
-y permite recalcular cualquier subconjunto sin volver a correr el modelo.
-Segundo, un control de distribución que separa la pérdida por cambio de fondo de
-la del cambio de prevalencia de especies, dos efectos que la comparación directa
-\emph{cis}/\emph{trans} confunde. Tercero, una adaptación de Grad-CAM a detección
-con la capa elegida por medición y no por convención, con un indicador de cuánta
-evidencia cae sobre el animal. Y cuarto, un módulo de monitoreo que además de
-producir el reporte de actividad lo \emph{valida} contra las anotaciones humanas,
-midiendo el error especie por especie.
+y recalcula cualquier subconjunto sin volver a correr el modelo. Segundo, un
+control de distribución que separa la pérdida por cambio de fondo de la del
+cambio de prevalencia de especies. Tercero, una adaptación de Grad-CAM a
+detección con la capa elegida por medición y no por convención. Y cuarto, un
+módulo de monitoreo que además de producir el reporte de actividad lo
+\emph{valida} contra las anotaciones humanas, midiendo el error especie por
+especie.

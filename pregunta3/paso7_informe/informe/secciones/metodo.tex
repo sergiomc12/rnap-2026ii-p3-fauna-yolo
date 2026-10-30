@@ -3,7 +3,7 @@
 Caltech Camera Traps (CCT-20), vía LILA BC: 243\,100 imágenes de 140 ubicaciones
 de cámara, con 21 categorías de animales más la clase vacía. De esas, 63\,025
 tienen bounding box, y solo esas pueden entrenar un detector: 46\,026 imágenes
-únicas, 18\,GB, verificadas de a una contra truncamiento tras la descarga.
+únicas, 18\,GB, verificadas una por una contra truncamiento tras la descarga.
 
 Se usa la partición de ECCV 2018~\cite{beery2018recognition}, que separa por
 \emph{tipo de ubicación}: \texttt{train} (12\,099 imágenes con caja, 10
@@ -20,7 +20,11 @@ sus 1\,665 imágenes con caja (4.5\%); esas 75 se excluyen. Las particiones
 diseño: una ráfaga no cruza cámaras.
 
 \emph{Las imágenes vacías no son una clase.} \texttt{empty} se excluye del mapa
-de clases, de modo que quedan 15 especies. La razón es conceptual: en detección
+de clases —y con ello del entrenamiento y de la evaluación, que usan solo
+imágenes con caja—, y de las 21 categorías de animales del taxonómico de CCT solo
+15 aparecen con bounding box en estas particiones, así que el mapa de clases —que
+se construye desde las cajas presentes— queda en 15 especies. La razón de excluir
+\texttt{empty} es conceptual: en detección
 la ausencia de cajas ya expresa que no hay nada, y una clase de fondo le
 enseñaría al modelo a dibujar una caja alrededor de la nada, con coordenadas que
 no existen. Podrían sumarse como \emph{negativos explícitos} (una imagen sin
@@ -40,6 +44,14 @@ detector exige $0..N{-}1$ en el orden exacto de la lista de nombres.
 
 \input{tablas/entrenamiento}
 
+\emph{Por qué YOLO11\,n.} El enunciado sugiere YOLOv8 o YOLOv9; se usa YOLO11,
+la iteración siguiente de la misma familia de detección en una sola pasada y la
+versión vigente de Ultralytics, con la misma interfaz de entrenamiento y
+evaluación. La variante \texttt{n}, la más pequeña, se eligió porque el factor
+limitante del dominio es el número de ejemplos por especie y no la capacidad del
+modelo, y porque permite un lote de 16 a 640 px en la GPU disponible; su costo en
+los animales pequeños se discute entre los límites.
+
 El criterio que gobierna el aumento de datos es uno solo: un aumento vale si
 produce imágenes que la cámara podría haber tomado de verdad. La cámara está
 atada a un poste y no gira, así que el volteo vertical, la rotación y la
@@ -47,7 +59,7 @@ perspectiva van en cero. El volteo horizontal sí vale, porque un animal cruza e
 cualquier dirección y la especie no cambia al reflejarla, y la variación HSV
 reproduce el rango real de iluminación, que incluye disparos nocturnos con
 infrarrojo. \emph{Mosaic} compone cuatro imágenes en una: ayuda con objetos
-chicos, que acá son el caso dominante, y rompe el contexto de fondo, que es
+chicos, que aquí son el caso dominante, y rompe el contexto de fondo, que es
 justamente lo que el modelo tiende a memorizar. Se apaga en las últimas diez
 épocas, porque terminar el entrenamiento con imágenes compuestas ajusta el modelo
 a una distribución que no es la del despliegue.

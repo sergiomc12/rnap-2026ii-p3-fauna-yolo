@@ -3,23 +3,23 @@
   \scriptsize
   \begin{tabular}{lrrrr|rrrr}
     \toprule
-    Especie & Cajas & Det. & AP@0.5 & AP@.5:.95 & Cajas & Det. & AP@0.5 & Caída \\
+    Especie & Cajas & Det. & AP@0.5 & AP@.5:.95 & Cajas & Det. & AP@0.5 & AP@.5:.95 \\
     \midrule
-    \texttt{opossum} & 4\,010 & 8\,956 & 0.9156 & 0.4996 & 4\,663 & 14\,337 & 0.8623 & 0.0533 \\
-    \texttt{rabbit} & 1\,559 & 5\,091 & 0.8436 & 0.5266 & 722 & 4\,968 & 0.3919 & 0.4517 \\
-    \texttt{cat} & 1\,528 & 3\,425 & 0.8659 & 0.5796 & 1\,366 & 5\,920 & 0.2359 & 0.6300 \\
-    \texttt{coyote} & 1\,182 & 3\,614 & 0.8792 & 0.6700 & 1\,902 & 6\,421 & 0.4255 & 0.4537 \\
-    \texttt{raccoon} & 981 & 6\,071 & 0.9057 & 0.5938 & 4\,803 & 7\,793 & 0.7062 & 0.1995 \\
-    \texttt{car} & 791 & 1\,041 & 0.9999 & 0.9978 & 1\,113 & 1\,488 & 0.9950 & 0.0049 \\
-    \texttt{bobcat} & 772 & 2\,723 & 0.7247 & 0.5212 & 1\,979 & 3\,858 & 0.4536 & 0.2711 \\
-    \texttt{bird} & 752 & 7\,377 & 0.5592 & 0.2770 & 180 & 17\,086 & 0.0132 & 0.5460 \\
-    \texttt{dog} & 725 & 3\,335 & 0.6628 & 0.4600 & 961 & 5\,116 & 0.6860 & -0.0232 \\
-    \texttt{squirrel} & 510 & 4\,289 & 0.6700 & 0.3433 & 782 & 7\,756 & 0.1719 & 0.4981 \\
-    \texttt{skunk} & 162 & 356 & 0.9430 & 0.6222 & 273 & 3\,639 & 0.4930 & 0.4500 \\
-    \texttt{rodent} & 146 & 3\,158 & 0.8089 & 0.4362 & 26 & 939 & 0.0018 & 0.8071 \\
+    \texttt{opossum} & 4\,010 & 8\,956 & 0.9156 & 0.4996 & 4\,663 & 14\,337 & 0.8623 & 0.4384 \\
+    \texttt{rabbit} & 1\,559 & 5\,091 & 0.8436 & 0.5266 & 722 & 4\,968 & 0.3919 & 0.2025 \\
+    \texttt{cat} & 1\,528 & 3\,425 & 0.8659 & 0.5796 & 1\,366 & 5\,920 & 0.2359 & 0.1520 \\
+    \texttt{coyote} & 1\,182 & 3\,614 & 0.8792 & 0.6700 & 1\,902 & 6\,421 & 0.4255 & 0.2973 \\
+    \texttt{raccoon} & 981 & 6\,071 & 0.9057 & 0.5938 & 4\,803 & 7\,793 & 0.7062 & 0.4536 \\
+    \texttt{car} & 791 & 1\,041 & 0.9999 & 0.9978 & 1\,113 & 1\,488 & 0.9950 & 0.9950 \\
+    \texttt{bobcat} & 772 & 2\,723 & 0.7247 & 0.5212 & 1\,979 & 3\,858 & 0.4536 & 0.3033 \\
+    \texttt{bird} & 752 & 7\,377 & 0.5592 & 0.2770 & 180 & 17\,086 & 0.0132 & 0.0063 \\
+    \texttt{dog} & 725 & 3\,335 & 0.6628 & 0.4600 & 961 & 5\,116 & 0.6860 & 0.4599 \\
+    \texttt{squirrel} & 510 & 4\,289 & 0.6700 & 0.3433 & 782 & 7\,756 & 0.1719 & 0.0934 \\
+    \texttt{skunk} & 162 & 356 & 0.9430 & 0.6222 & 273 & 3\,639 & 0.4930 & 0.3116 \\
+    \texttt{rodent} & 146 & 3\,158 & 0.8089 & 0.4362 & 26 & 939 & 0.0018 & 0.0008 \\
     \texttt{deer} & 140 & 595 & 0.4163 & 0.2607 & 0 & 646 & --- & --- \\
-    \texttt{badger} & 4 & 145 & 0.0000 & 0.0000 & 15 & 9 & 0.1333 & -0.1333 \\
-    \texttt{fox} & 2 & 8 & 1.0000 & 0.7500 & 1 & 44 & 0.0000 & 1.0000 \\
+    \texttt{badger} & 4 & 145 & 0.0000 & 0.0000 & 15 & 9 & 0.1333 & 0.1000 \\
+    \texttt{fox} & 2 & 8 & 1.0000 & 0.7500 & 1 & 44 & 0.0000 & 0.0000 \\
     \bottomrule
   \end{tabular}
   \caption{Desglose por especie: a la izquierda ubicaciones vistas (\texttt{cis\_test}), a la derecha nunca vistas (\texttt{trans\_test}). `Det.' es cuántas detecciones emitió el modelo: un AP bajo con pocas detecciones es un problema de recall, y con muchas, de precisión. Esa distinción no se puede hacer con la AP sola, y se arreglan de manera distinta. Las especies \texttt{deer} no tienen ninguna caja anotada en alguna de las dos particiones: su AP es indefinida (---), no cero, y queda fuera del promedio macro.}

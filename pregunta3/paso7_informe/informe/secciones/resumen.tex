@@ -1,8 +1,9 @@
 Se aborda la detección y clasificación de especies en fotografías de cámaras
 trampa del conjunto Caltech Camera Traps, donde el 70\% de las imágenes no
 contiene ningún animal y el desbalance entre especies alcanza un factor 500. Se
-ajusta un detector YOLO11 a 640 px sobre 12\,099 imágenes con bounding box, con
-las imágenes vacías tratadas como ausencia de objeto y no como clase de fondo.
+ajusta un detector YOLO11 a 640 px sobre 12\,099 imágenes con bounding box; las
+imágenes vacías no entran al entrenamiento ni a la evaluación, porque en
+detección la ausencia de cajas ya expresa que no hay nada que detectar.
 El modelo alcanza mAP@0.5 $= 0.7463$ (IC95\% $[0.7236, 0.7563]$) en ubicaciones
 de cámara vistas durante el entrenamiento y $0.3978$ en ubicaciones nunca
 vistas, una brecha de $0.3485$ con intervalos disjuntos. Controlando el cambio
@@ -17,7 +18,6 @@ oclusión sintética es nula: tapar el 25\% del área de cada animal cuesta el 6
 del mAP. Sobre esas salidas se construye un módulo de monitoreo que agrupa las
 detecciones en eventos independientes y reporta tasas por 100 noches-cámara; su
 índice de nocturnidad reproduce la historia natural conocida de las catorce
-especies detectadas sin haber recibido esa información, y al mismo tiempo
-sobreestima el conteo de eventos en \emph{todas} ellas, entre un 2\% y un
-100\% según la especie. Esa cifra, medida contra las anotaciones humanas, es la
-que determina para qué sirve el módulo y para qué no.
+especies detectadas sin haber recibido esa información, y al mismo tiempo, en
+cámaras no vistas el conteo de eventos se desvía entre $-75\%$ y $+800\%$ según
+la especie: sobreestima las comunes y pierde la más rara (\texttt{badger}).

@@ -1,28 +1,24 @@
 Un detector YOLO11 ajustado sobre Caltech Camera Traps alcanza mAP@0.5
-$= 0.7463$ en las ubicaciones de cámara donde se entrenó y $0.3978$ en
-ubicaciones nuevas. La brecha de $0.3485$ sobrevive al control del cambio de
-prevalencia de especies, que explica solo $0.033$ de ella, y no afecta a todas
-las clases por igual: el único objeto rígido del conjunto, \texttt{car},
-conserva su desempeño intacto mientras las especies de animales pierden entre un
-tercio y el 98\% de su AP. La disociación muestra que lo que falla no es el
-cambio de dominio sino la evidencia específica con que se reconoce al animal.
+$= 0.7463$ donde se entrenó y $0.3978$ en ubicaciones nuevas. La brecha de
+$0.3485$ sobrevive al control del cambio de prevalencia (que explica solo
+$0.033$) y no afecta a todas las clases por igual: \texttt{car}, el único objeto
+rígido, conserva su desempeño mientras los animales pierden entre un tercio y el
+98\% de su AP. Lo que falla no es el cambio de dominio sino la evidencia
+específica con que se reconoce al animal.
 
-Grad-CAM sobre el backbone, con la capa elegida por medición y no por convención,
-da una medida independiente de lo mismo: en la mitad de las imágenes de
-ubicaciones nuevas la activación no está más concentrada sobre el animal que un
-mapa uniforme, y para animales que ocupan menos del 1\% del cuadro está por
-debajo de ese umbral. La robustez ante oclusión es nula (tapar un cuarto del área
-cuesta dos tercios del mAP), consistente con haber verificado que el
-entrenamiento nunca incluyó oclusión, pese a que el registro de la corrida
-sugiere lo contrario.
+Grad-CAM, con la capa elegida por medición y no por convención, da una medida
+independiente: en la mitad de las imágenes nuevas la activación no supera a un
+mapa uniforme, y para los animales bajo el 1\% del cuadro queda por debajo. La
+robustez ante oclusión es nula (tapar un cuarto del área cuesta dos tercios del
+mAP), sobre un modelo que —verificado— nunca vio oclusión, pese a lo que sugiere
+el registro de la corrida.
 
 El módulo de monitoreo, demostrado sobre cámaras nunca vistas, produce un reporte
 cuyo índice de nocturnidad reproduce la historia natural de las especies sin
-haber recibido esa información, y que a la vez sobreestima el conteo de casi
-todas, con errores que en terreno nuevo llegan al 281\%: captura la señal
-ecológica gruesa pero no es confiable en la magnitud, y por eso publica su propio
-error contra las anotaciones humanas.
+recibir esa información, y que a la vez se desvía en el conteo de casi todas
+(hasta $+281\%$ en \texttt{bird}, $+800\%$ en \texttt{fox} con un solo evento
+anotado): captura la señal ecológica gruesa pero no la magnitud, y por eso
+publica su error contra las anotaciones humanas.
 
-Quedan tres líneas de trabajo, en los README de sus pasos: reentrenar a 960 px,
-sumar las imágenes vacías como negativos y entrenar varias semillas para atribuir
-las diferencias chicas.
+Quedan tres líneas de trabajo: reentrenar a 960 px, sumar las imágenes vacías
+como negativos y entrenar varias semillas para atribuir las diferencias pequeñas.

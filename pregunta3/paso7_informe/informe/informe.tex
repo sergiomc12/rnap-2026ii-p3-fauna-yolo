@@ -19,12 +19,18 @@
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{capt-of} % \captionof para la tabla por periodo, que va en línea
+
+% La hoja de estilo de NeurIPS fija el título de la bibliografía en inglés
+% (\bibsection -> "References"); se restituye en español.
+\renewcommand{\bibsection}{\section*{\normalsize\bfseries Referencias}}
 
 \title{Detección y clasificación de fauna en cámaras trampa con YOLO:
        generalización entre ubicaciones, robustez y monitoreo ecológico}
 
 \author{%
-  Anónimo 1 \quad Anónimo 2 \quad Anónimo 3 \quad Anónimo 4 \quad Anónimo 5 \\
+  Flavio César Amayo Gamboa \quad Gustavo Adolfo Huarcaya Delgado \\
+  Jhordy Joel Maximiliano Cusi \quad Sergio Mondragon Contreras \\
   Facultad de Ingeniería Industrial y de Sistemas \\
   Universidad Nacional de Ingeniería
 }
@@ -62,9 +68,9 @@
 \section*{Reproducibilidad}
 Todo se reproduce con un único comando, \texttt{python
 pregunta3/paso7\_informe/ejecutar\_todo.py} (en el README), que va de la descarga
-a este documento y se retoma sin repetir lo hecho. Las 113 pruebas propias
-(\texttt{tests/test\_p3\_*.py}) fijan la definición de AP y la agrupación en
-eventos.
+a este documento. Las pruebas unitarias propias en \texttt{tests/} del
+repositorio (\texttt{test\_p3\_*.py}) fijan la definición de AP y la agrupación
+en eventos.
 
 {\small
 \bibliographystyle{plain}

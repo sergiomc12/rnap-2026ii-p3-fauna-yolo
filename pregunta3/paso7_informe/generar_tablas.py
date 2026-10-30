@@ -62,6 +62,29 @@ def _tt(texto) -> str:
     return f"\\texttt{{{escapado}}}"
 
 
+# "chico" es coloquial en una etiqueta de tabla; en el texto se mantiene.
+_NOMBRE_TRAMO = {"chico": "pequeño"}
+
+
+def _rango_area(minimo: float, maximo: float) -> str:
+    """Tramo de tamaño como porcentaje del área del cuadro.
+
+    Los límites se guardan como fracción del área (0.002 = 0.2\\%). Mostrarlos
+    como fracción con dos decimales colapsaba ``diminuto`` (0.000--0.00) y hacía
+    que ``grande`` mostrara 1.01, un valor mayor que 1 que no es un área real
+    sino el tope abierto del último tramo. Se emiten porcentajes y los tramos
+    extremos quedan abiertos (``< 0.2\\%`` y ``> 5\\%``).
+    """
+    def pct(valor: float) -> str:
+        return f"{valor * 100:.1f}".rstrip("0").rstrip(".")
+
+    if minimo <= 0.0:
+        return f"$<$ {pct(maximo)}\\%"
+    if maximo > 1.0:
+        return f"$>$ {pct(minimo)}\\%"
+    return f"{pct(minimo)}--{pct(maximo)}\\%"
+
+
 def _tabular(columnas: str, cabecera: Sequence[str],
              filas: Sequence[Sequence[str]], leyenda: str,
              etiqueta: str, tamano: str = "small") -> str:
@@ -155,19 +178,17 @@ def tabla_especies_comparada(metricas: dict, generalizacion: dict) -> str:
     """
     cis = metricas.get("cis_test", {}).get("por_clase", {})
     trans = metricas.get("trans_test", {}).get("por_clase", {})
-    caidas = {b["nombre"]: b for b in generalizacion.get("brechas", ())}
 
     filas = []
     for nombre, valores in sorted(cis.items(),
                                   key=lambda kv: -kv[1]["soporte"]):
         otra = trans.get(nombre, {})
-        caida = (caidas.get(nombre) or {}).get("caida")
         filas.append([
             _tt(nombre),
             _entero(valores["soporte"]), _entero(valores["predicciones"]),
             _num(valores["ap50"]), _num(valores["ap50_95"]),
             _entero(otra.get("soporte")), _entero(otra.get("predicciones")),
-            _num(otra.get("ap50")), _num(caida),
+            _num(otra.get("ap50")), _num(otra.get("ap50_95")),
         ])
 
     ausentes = (list(metricas.get("cis_test", {}).get("clases_sin_positivos", ()))
@@ -182,7 +203,7 @@ def tabla_especies_comparada(metricas: dict, generalizacion: dict) -> str:
     return _tabular(
         "lrrrr|rrrr",
         ["Especie", "Cajas", "Det.", "AP@0.5", "AP@.5:.95",
-         "Cajas", "Det.", "AP@0.5", "Caída"],
+         "Cajas", "Det.", "AP@0.5", "AP@.5:.95"],
         filas,
         "Desglose por especie: a la izquierda ubicaciones vistas "
         "(\\texttt{cis\\_test}), a la derecha nunca vistas "
@@ -249,15 +270,16 @@ def tabla_tamano(robustez: dict) -> str:
     for conjunto, tramos in robustez["tamano"].items():
         for tramo in tramos:
             marca = "" if tramo["cajas"] >= 50 else "$^{\\dagger}$"
+            nombre = _NOMBRE_TRAMO.get(tramo["tramo"], tramo["tramo"])
             filas.append([
-                _tt(conjunto), tramo["tramo"] + marca,
-                f"{tramo['minimo']:.3f}--{tramo['maximo']:.2f}",
+                _tt(conjunto), nombre + marca,
+                _rango_area(tramo["minimo"], tramo["maximo"]),
                 _entero(tramo["imagenes"]), _entero(tramo["cajas"]),
                 _num(tramo["map50"]),
             ])
     return _tabular(
         "llcrrr",
-        ["Partición", "Tramo", "Fracción del cuadro", "Imág.", "Cajas",
+        ["Partición", "Tramo", "Área del cuadro", "Imág.", "Cajas",
          "mAP@0.5"],
         filas,
         "Robustez ante el tamaño del objeto. Una imagen entra en un tramo solo "
@@ -358,10 +380,11 @@ def tabla_robustez(robustez: dict) -> str:
     for conjunto, tramos in robustez["tamano"].items():
         for tramo in tramos:
             marca = "" if tramo["cajas"] >= 50 else "$^{\\dagger}$"
+            nombre = _NOMBRE_TRAMO.get(tramo["tramo"], tramo["tramo"])
             filas.append([
                 "tamaño", _tt(conjunto),
-                f"{tramo['tramo']}{marca} ({tramo['minimo']:.3f}--"
-                f"{tramo['maximo']:.2f})",
+                f"{nombre}{marca} "
+                f"({_rango_area(tramo['minimo'], tramo['maximo'])})",
                 _entero(tramo["cajas"]), _num(tramo["map50"]),
             ])
 
@@ -373,7 +396,7 @@ def tabla_robustez(robustez: dict) -> str:
                 continue
             etiqueta = ("sin tapar" if float(nivel) == 0.0
                         else f"{modo}, {float(nivel):.0%}".replace("%", "\\%"))
-            filas.append(["oclusión", _tt("cis\\_test").replace("\\\\", "\\"),
+            filas.append(["oclusión", _tt("cis_test"),
                           etiqueta, submuestra,
                           _num((valores.get(nivel) or {}).get("map50"))])
 
@@ -465,8 +488,7 @@ def tabla_actividad(actividad: dict, etiqueta: str = "tab:actividad",
         f"separadas por menos de "
         f"{actividad['parametros']['minutos_independencia']} minutos. "
         f"`Anotados' es el mismo reporte calculado desde las cajas anotadas a "
-        f"mano, y `Error' la diferencia relativa: es la validación del módulo, "
-        f"no un adorno.",
+        f"mano, y `Error' la diferencia relativa, que valida el módulo.",
         etiqueta, tamano=tamano)
 
 
@@ -521,10 +543,46 @@ def tabla_actividad_comparada(cis: dict, trans: dict) -> str:
         f"agrupa detecciones de la misma especie y cámara separadas por menos de "
         f"{trans['parametros']['minutos_independencia']} minutos. `Error' es la "
         f"diferencia relativa de los eventos del modelo contra el mismo reporte "
-        f"calculado desde las cajas anotadas a mano: es la validación del "
-        f"módulo, no un adorno. `Noct.' es el índice de nocturnidad, un control "
+        f"calculado desde las cajas anotadas a mano, que valida el módulo. "
+        f"`Noct.' es el índice de nocturnidad, un control "
         f"contra la historia natural conocida de cada especie.",
-        "tab:actividad", tamano="footnotesize")
+        "tab:actividad", tamano="scriptsize")
+
+
+def tabla_actividad_franjas(actividad: dict, minimo_eventos: int = 300) -> str:
+    """Entregable #5: reporte de actividad por periodo del día.
+
+    El enunciado pide un reporte tabular por especie \\emph{y por periodo}. Las
+    franjas son las de ``paso6_monitoreo/eventos.py``, y los conteos salen del
+    campo ``por_franja`` del mismo JSON que produce el resto del reporte.
+    """
+    franjas = ("noche", "amanecer", "dia", "atardecer", "noche_tarde")
+    titulos = {"noche": "Noche", "amanecer": "Amanecer", "dia": "Día",
+               "atardecer": "Atardecer", "noche_tarde": "Noche tarde"}
+    especies = [e for e in sorted(actividad["especies"],
+                                  key=lambda e: -e["eventos"])
+                if e["eventos"] >= minimo_eventos]
+    cabecera = ["Especie"] + [titulos[f] for f in franjas]
+    filas = [[_tt(e["especie"])]
+             + [_entero(e.get("por_franja", {}).get(f, 0)) for f in franjas]
+             for e in especies]
+    # Tabla NO flotante (en línea): el cuerpo del informe ya usa siete flotantes
+    # y agregar uno más empujaba el texto por encima del límite de diez páginas.
+    # Al emitirla en el punto donde se la cita, no entra en la cola de flotantes.
+    lineas = [
+        "\\begin{center}", "  \\footnotesize",
+        "  \\captionof{table}{Actividad por periodo del día en "
+        f"{_tt(actividad['particion'])} (entregable \\#5): eventos "
+        f"independientes por franja horaria, para las especies con al menos "
+        f"{minimo_eventos} eventos. Franjas: noche (0--5\\,h), amanecer (5--8), "
+        f"día (8--17), atardecer (17--20), noche tarde (20--24).}}",
+        "  \\label{tab:actividad_franjas}",
+        "  \\begin{tabular}{lrrrrr}", "    \\toprule",
+        "    " + " & ".join(cabecera) + " \\\\", "    \\midrule",
+    ]
+    lineas += ["    " + " & ".join(f) + " \\\\" for f in filas]
+    lineas += ["    \\bottomrule", "  \\end{tabular}", "\\end{center}", ""]
+    return "\n".join(lineas)
 
 
 def tabla_entrenamiento(entrenamiento: dict) -> str:
@@ -645,6 +703,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         escribir("actividad_trans",
                  tabla_actividad(datos["actividad_trans"],
                                  "tab:actividad_trans", tamano="footnotesize"))
+        escribir("actividad_franjas",
+                 tabla_actividad_franjas(datos["actividad_trans"]))
     if "actividad" in datos and "actividad_trans" in datos:
         escribir("actividad_comparada",
                  tabla_actividad_comparada(datos["actividad"],

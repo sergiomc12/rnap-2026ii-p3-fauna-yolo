@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.7.31)  30 OCT 2026 15:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.7.31)  30 OCT 2026 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -270,6 +270,9 @@ LaTeX Info: Redefining \] on input line 2951.
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
+(C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/capt-of\capt-of.sty
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+)
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pd
 ftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
@@ -282,20 +285,20 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `informe.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -359,10 +362,10 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \. on input line 34.
-LaTeX Info: Redefining \% on input line 34.
+LaTeX Info: Redefining \. on input line 39.
+LaTeX Info: Redefining \% on input line 39.
  (secciones/resumen.tex
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 11
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 12
 .
 
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
@@ -379,7 +382,7 @@ Overfull \hbox (13.58987pt too wide) in paragraph at lines 4--12
  []
 
 ) (tablas/especies.tex)
-Overfull \hbox (22.07822pt too wide) in paragraph at lines 18--23
+Overfull \hbox (22.07822pt too wide) in paragraph at lines 17--22
 []\T1/ptm/m/n/10 En ubi-ca-cio-nes vis-tas el mo-de-lo al-can-za mAP@0.5 $\OT1/
 cmr/m/n/10 = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 7463$ \T1/ptm/m/n/10 (IC95$ $% 
 $\OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 7236\OML/cmm/m/it/10 ; \OT
@@ -392,13 +395,13 @@ $\OT1/cmr/m/n/10 [0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 7236\OML/cmm/m/it/10 ; \OT
 File: figuras/trans_test_falso_positivo.jpg Graphic file (type jpg)
 <use figuras/trans_test_falso_positivo.jpg>
 Package pdftex.def Info: figuras/trans_test_falso_positivo.jpg  used on input l
-ine 100.
-(pdftex.def)             Requested size: 198.7425pt x 72.49037pt.
+ine 98.
+(pdftex.def)             Requested size: 158.99156pt x 57.98314pt.
  [6 <./figuras/trans_test_falso_positivo.jpg>]
-(tablas/robustez.tex) (tablas/actividad_comparada.tex)) [7]
-(secciones/discusion.tex [8]) (secciones/responsable.tex [9])
-(secciones/conclusiones.tex)
-Overfull \hbox (52.25496pt too wide) in paragraph at lines 63--68
+(tablas/robustez.tex) (tablas/actividad_comparada.tex)
+(tablas/actividad_franjas.tex [7])) (secciones/discusion.tex [8])
+(secciones/responsable.tex [9]) (secciones/conclusiones.tex)
+Overfull \hbox (52.25496pt too wide) in paragraph at lines 68--73
 []\T1/ptm/m/n/10 Todo se re-pro-du-ce con un úni-co co-man-do, \T1/pcr/m/n/10 p
 ython pregunta3/paso7_informe/ejecutar_todo.py
  []
@@ -413,32 +416,33 @@ L3 programming layer <2025-12-24>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6653 strings out of 467871
- 110895 string characters out of 5417892
- 542321 words of memory out of 5000000
- 35412 multiletter control sequences out of 15000+600000
+ 6681 strings out of 467871
+ 111828 string characters out of 5417892
+ 542512 words of memory out of 5000000
+ 35433 multiletter control sequences out of 15000+600000
  661865 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,10n,79p,808b,408s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,10n,79p,788b,408s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmmi10.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi6.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmmi7.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/odt054/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/odt054/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/odt054/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/odt
-054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/
-Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8
+nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/odt054/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/odt054/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/odt054/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/odt0
+54/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
+Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6
 .pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmsy9.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/co
-urier/ucrr8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw
-/times/utmb8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/times/utmr8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on informe.pdf (11 pages, 1574022 bytes).
+/cm/cmsy8.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy9.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/urw/courier/ucrr8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/
+type1/urw/times/utmb8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts
+/type1/urw/times/utmr8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on informe.pdf (11 pages, 1582260 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
+ 115 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

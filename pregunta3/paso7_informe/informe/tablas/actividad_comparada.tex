@@ -1,6 +1,6 @@
 \begin{table}[t]
   \centering
-  \footnotesize
+  \scriptsize
   \begin{tabular}{lrrr|rrr}
     \toprule
     Especie & Eventos & Error & Noct. & Eventos & Error & Noct. \\
@@ -22,6 +22,6 @@
     \texttt{badger} & 2 & -75\% & 100\% & --- & --- & --- \\
     \bottomrule
   \end{tabular}
-  \caption{Reporte de actividad por especie. A la izquierda la demostración principal, cámaras nunca vistas (\texttt{trans\_test}: 9 cámaras, 2\,090 noches-cámara); a la derecha el caso favorable, cámaras vistas en el entrenamiento (\texttt{cis\_test}: 10 cámaras, 1\,131 noches-cámara). Un evento independiente agrupa detecciones de la misma especie y cámara separadas por menos de 30 minutos. `Error' es la diferencia relativa de los eventos del modelo contra el mismo reporte calculado desde las cajas anotadas a mano: es la validación del módulo, no un adorno. `Noct.' es el índice de nocturnidad, un control contra la historia natural conocida de cada especie.}
+  \caption{Reporte de actividad por especie. A la izquierda la demostración principal, cámaras nunca vistas (\texttt{trans\_test}: 9 cámaras, 2\,090 noches-cámara); a la derecha el caso favorable, cámaras vistas en el entrenamiento (\texttt{cis\_test}: 10 cámaras, 1\,131 noches-cámara). Un evento independiente agrupa detecciones de la misma especie y cámara separadas por menos de 30 minutos. `Error' es la diferencia relativa de los eventos del modelo contra el mismo reporte calculado desde las cajas anotadas a mano, que valida el módulo. `Noct.' es el índice de nocturnidad, un control contra la historia natural conocida de cada especie.}
   \label{tab:actividad}
 \end{table}
